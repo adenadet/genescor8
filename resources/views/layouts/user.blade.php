@@ -3,32 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>St. Nicholas Hospital E-Services | @yield('title')</title>
+    <title>Genescor App User Area | @yield('title')</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper" id="corner">
-    @include('partials.ext.topnav')
-    @include('partials.ext.leftnav')
-    @yield('left-nav')
+    @include('partials.user.topnav')
+    @include('partials.user.leftnav')
+    
     <div class="content-wrapper">
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Applicant Page</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><router-link to="/dashboard">Home</router-link></li>
-                        <li class="breadcrumb-item active">E-Services Applicant</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
         @yield('content')
     </div>
     <aside class="control-sidebar control-sidebar-dark">
@@ -39,7 +24,7 @@
     </aside>
     <footer class="main-footer">
         <div class="float-right d-none d-sm-inline">Squarem Knight Prince Consultancy</div>
-        <strong>Copyright &copy; 2014-<?= date('Y') ?> <a href="https://adminlte.io">St. Nicholas Hospital</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2019-<?= date('Y') ?> <a href="https://adminlte.io">Genescor </a>.</strong> All rights reserved.
     </footer>
 </div>
 <script src="{{asset('js/app.js')}}"></script>

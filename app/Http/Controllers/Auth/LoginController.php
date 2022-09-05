@@ -12,25 +12,7 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    //protected $redirectTo = RouteServiceProvider::HOME;
-    public function redirectTo() {
-        $role = Auth::user()->user_type; 
-        dd($role);
-        switch ($role) {
-            case 'SuperAdmin':
-                return '/admin/dashboard'; break;
-            case 'staff':
-                return '/staff/dashboard'; break;
-            case 'patient':
-                return '/patients/dashboard'; break;
-            case 'doctor':
-                return '/doctors/dashboard'; break; 
-            case 'hospital':
-                return '/hospitals/dashboard'; break; 
-            default:
-                return '/home'; break;
-        }
-    }
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     public function __construct()
     {
@@ -46,14 +28,20 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
   
-        $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'unique_id';
+        $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'])))
         {
-            if (Auth::user()->user_type == 'staff'){
-                return redirect()->route('dashboard');
+            if (Auth::user()->hasRole('Staffs')){
+                return redirect()->route('staffs');
+            }
+            else if (Auth::user()->hasRole('Consultants')){
+                return redirect()->route('consultants');
+            }
+            else if (Auth::user()->hasRole('Agency')){
+                return redirect()->route('agency');
             }
             else{
-                return redirect()->route('applicants');
+                return redirect()->route('app');
             }
         }
         else{

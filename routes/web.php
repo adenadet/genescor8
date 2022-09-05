@@ -2,19 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
-
 Auth::routes();
+
+Route::get('/app', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/patient', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
-
-Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
-
 
 Route::get('/clear-cache', function() {
     //$exitCode = Artisan::call('cache:clear');
@@ -26,21 +20,12 @@ Route::get('/clear-cache', function() {
     // return what you want
 });
 
-Route::group(['middleware' => 'auth','namespace' => 'App\Http\Controllers\Std', 'name' => 'student.'],function(){
-    Route::resource('/learn/student_area/exam', 'ExamController');
-});
+Route::namespace('App\Http\Controllers')->middleware(['auth:api', 'role:Agency'])->name('agency.')->group(base_path('routes/web/agency.php'));
+Route::namespace('App\Http\Controllers')->middleware(['auth:api'])->name('app.')->group(base_path('routes/web/app.php'));
+Route::namespace('App\Http\Controllers')->middleware(['auth:api', 'role:Consultant'])->name('consultant.')->group(base_path('routes/web/consultant.php'));
+Route::namespace('App\Http\Controllers')->middleware(['auth:api', 'role:Staff'])->name('staff.')->group(base_path('routes/web/staff.php'));
 
-Route::group(['middleware' => 'auth','namespace' => 'App\Http\Controllers\Learn', 'name' => 'learn.', 'prefix' => '/learn'],function(){
-    Route::get('/admin_area',             'AdminController@index');
-    Route::get('/student_area',           'StudentController@index');
-    Route::get('/tutor_area',             'TutorController@index');
-
-    Route::get('/admin_area/{any}',       'AdminController@index')->where('any', '.*');
-    Route::get('/student_area/{any}',     'StudentController@index')->where('any', '.*');
-    Route::get('/tutor_area/{any}',       'TutorController@index')->where('any', '.*'); 
-});
-
-Route::group(['middleware' => ['auth', 'role:Staff'],'namespace' => 'App\Http\Controllers\EMR', 'name' => 'eservices.', 'prefix' => '/eservices'],function(){
+Route::group(['middleware' => ['auth'],'namespace' => 'App\Http\Controllers\EMR', 'name' => 'eservices.', 'prefix' => '/eservices'],function(){
     Route::get('/administrator',          'ServiceController@administrator');
     Route::get('/front_office',           'ServiceController@front');
     Route::get('/medical_officer',        'ServiceController@medical');
@@ -52,38 +37,21 @@ Route::group(['middleware' => ['auth', 'role:Staff'],'namespace' => 'App\Http\Co
     Route::get('/radiologist/{any}',      'ServiceController@radiologist')->where('any', '.*'); 
 });
 
-Route::middleware(['auth', 'role:Staff'])->group(function () {
-    Route::get('/chats',         [App\Http\Controllers\ModulesController::class, 'chats'])->name('chats');
-    Route::get('/contacts',      [App\Http\Controllers\ModulesController::class, 'contacts'])->name('contacts');
-    Route::get('/dashboard',     [App\Http\Controllers\ModulesController::class, 'dashboard'])->name('dashboard');
-    Route::get('/departments',   [App\Http\Controllers\ModulesController::class, 'departments'])->name('departments');
-    Route::get('/internet',      [App\Http\Controllers\ModulesController::class, 'internet'])->name('internet');
-    Route::get('/notices',       [App\Http\Controllers\ModulesController::class, 'notices'])->name('notices');
-    Route::get('/policies',      [App\Http\Controllers\ModulesController::class, 'policies'])->name('policies');
-    Route::get('/profile',       [App\Http\Controllers\ModulesController::class, 'profile'])->name('profile');
-    Route::get('/settings',      [App\Http\Controllers\ModulesController::class, 'settings'])->name('settings');
-    Route::get('/staff_month',   [App\Http\Controllers\ModulesController::class, 'staff_month'])->name('staff_month');
-    Route::get('/ticketing',     [App\Http\Controllers\ModulesController::class, 'ticketing'])->name('ticketing');
-    Route::get('/users',         [App\Http\Controllers\ModulesController::class, 'users'])->name('users');
+Route::group(['middleware' => ['auth'],'namespace' => 'App\Http\Controllers', 'name' => 'app.', 'prefix' => '/app'], function () {
     
-    //Auto Redirect
-    Route::get('/chats/{any}',              [App\Http\Controllers\ModulesController::class, 'chats'])->where('any', '.*');
-    Route::get('/departments/{any}',        [App\Http\Controllers\ModulesController::class, 'departments'])->where('any', '.*');
-    Route::get('/internet/{any}',           [App\Http\Controllers\ModulesController::class, 'internet'])->where('any', '.*');
-    Route::get('/notices/{any}',            [App\Http\Controllers\ModulesController::class, 'notices'])->where('any', '.*');
-    Route::get('/policies/{any}',           [App\Http\Controllers\ModulesController::class, 'policies'])->where('any', '.*');
-    Route::get('/settings/{any}',           [App\Http\Controllers\ModulesController::class, 'settings'])->where('any', '.*');
-    Route::get('/staff_month/{any}',        [App\Http\Controllers\ModulesController::class, 'staff_month'])->where('any', '.*');
-    Route::get('/ticketing/{any}',          [App\Http\Controllers\ModulesController::class, 'ticketing'])->where('any', '.*');
-    Route::get('/users/{any}',              [App\Http\Controllers\ModulesController::class, 'users'])->where('any', '.*');
-
 });
 
-Route::get('/member_area/{any}', 'HomeController@index')->where('any', '.*');
+Route::group(['middleware' => ['auth', 'role:Agency'],'namespace' => 'App\Http\Controllers', 'name' => 'agencies.', 'prefix' => '/agencies'], function () {
+    Route::get('/',             'AgencyController@index');
+    Route::get('/{any}',        'AgencyController@index')->where('any', '.*');
+});
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/applicants',         [App\Http\Controllers\ApplicantController::class, 'index'])->name('applicants');
+Route::group(['middleware' => ['auth', 'role:Consultant'],'namespace' => 'App\Http\Controllers', 'name' => 'consultants.', 'prefix' => '/consultants'], function () {
+    Route::get('/',             'ConsultantController@index');
+    Route::get('/{any}',        'ConsultantController@index')->where('any', '.*');
+});
 
-    Route::get('/applicants/{any}',   [App\Http\Controllers\ApplicantController::class, 'index'])->where('any', '.*');
-
+Route::group(['middleware' => ['auth', 'role:Staff'],'namespace' => 'App\Http\Controllers', 'name' => 'staffs.', 'prefix' => '/staffs'], function () {
+    Route::get('/',             'StaffController@index');
+    Route::get('/{any}',        'StaffController@index')->where('any', '.*');
 });

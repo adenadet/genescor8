@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group">
-                <label>First Name *</label>
+                <label>Applicant *</label>
                 <input type="text" required class="form-control" id="first_name" name="first_name" placeholder="First Name *" v-model="AppointmentData.first_name" :class="{'is-invalid' : AppointmentData.errors.has('first_name') }">
                 <has-error :form="AppointmentData" field="first_name"></has-error> 
             </div>
@@ -29,83 +29,13 @@
         </div>
         <div class="col-md-4 col-sm-12">
             <div class="form-group">
-                <label>City*</label>
+                <label>Time Slot *</label>
                 <input type="text" class="form-control" id="city" name="city" placeholder="Enter City *" v-model="AppointmentData.city" :class="{'is-invalid' : AppointmentData.errors.has('city') }">
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-12">
-            <div class="form-group">
-                <label>State</label>
-                <select class="form-control" id="state_id" name="state_id" placeholder="Enter State / County *" required v-model="AppointmentData.state_id" :class="{'is-invalid' : AppointmentData.errors.has('state_id') }">
-                    <option value="">--Select State--</option>
-                    <option v-for="state in states" v-bind:key="state.id" :value="state.id" >{{state.name}}</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-12">
-            <div class="form-group">
-                <label>LGA</label>
-                <select class="form-control" id="area_id" name="area_id" required v-model="AppointmentData.area_id" :class="{'is-invalid' : AppointmentData.errors.has('area_id') }">
-                    <option value="">--Select area--</option>
-                    <option v-for="area in areas" v-bind:key="area.id" :value="area.id" >{{area.name}}</option>
-                </select>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 col-sm-12">
-            <div class="form-group">
-                <label>Phone Number</label>
-                <input type="number" class="form-control" id="phone" name="phone" placeholder="Enter Phone Number *" required v-model="AppointmentData.phone" :class="{'is-invalid' : AppointmentData.errors.has('phone') }">
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <div class="form-group">
-                <label>Alternate Phone</label>
-                <input type="text" class="form-control" id="alt_phone" name="alt_phone" placeholder="Alternate Phone Number" v-model="AppointmentData.alt_phone" :class="{'is-invalid' : AppointmentData.errors.has('alt_phone') }">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 col-sm-12">
-            <div class="form-group">
-                <label>Email Address</label>
-                <input :disabled= "editMode ? 'disabled' : 'false'" type="text" class="form-control" id="email" name="email" placeholder="Enter Email Address *" required v-model="AppointmentData.email" :class="{'is-invalid' : AppointmentData.errors.has('email') }">
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <div class="form-group">
-                <label>Unique ID</label>
-                <input :disabled= "editMode ? 'disabled' : 'false'" type="text" class="form-control" id="unique_id" name="unique_id" placeholder="Enter unique_id Address *" required v-model="AppointmentData.unique_id" :class="{'is-invalid' : AppointmentData.errors.has('unique_id') }">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 col-sm-12">
-            <div class="form-group">
-                <label>Sex</label>
-                <select class="form-control" id="sex" name="sex" required v-model="AppointmentData.sex" :class="{'is-invalid' : AppointmentData.errors.has('sex') }">
-                    <option value="">---Select Sex---</option>
-                    <option value="Female">Female</option>
-                    <option value="Male">Male</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <label>Date of Birth</label>
-            <div class="form-group">
-                <input name="dob" id="dob" type="date" data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Birth Date" v-model="AppointmentData.dob" :class="{'is-invalid' : AppointmentData.errors.has('dob') }">
-            </div>
-        </div>
-        <div class="col-md-12 col-sm-12">
-            <label>Profile Picture</label>
-            <div class="form-group">
-                <input type="file" class="form-control" placeholder="Birth Date" @change="updateProfilePic">
             </div>
         </div>
         <input type="hidden" name="id" id="id" v-model="AppointmentData.id">
     </div>
-    <button @click.prevent="updateAppointmentData" type="submit" name="submit" class="submit btn btn-success">Submit</button>
+    <button @click.prevent="editMode ? updateAppointment() : createAppointment()" type="submit" name="submit" class="submit btn btn-success">Submit</button>
 </form>
 </div>
 </template>
@@ -115,24 +45,10 @@ export default {
         return  {
             editMode: true, 
             AppointmentData: new Form({
-                first_name: '', 
-                other_name:'', 
-                last_name:'', 
-                email:'', 
-                unique_id: '',
-                password:'', 
-                street:'', 
-                street2:'', 
-                city:'', 
-                area_id:'', 
-                state_id:'', 
-                phone:'', 
-                alt_phone:'', 
-                sex:'', 
-                image:'', 
-                id:'', 
-                dob:'', 
-                roles:'',
+                patient_id: '', 
+                service_id:'', 
+                date:'', 
+                time_slot:'', 
             }),
         }
     },
