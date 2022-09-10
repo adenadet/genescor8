@@ -1,20 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Api\Lms;
+namespace App\Http\Controllers\Api\Blogs;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\Lms\CertificateType;
-
-class CertificateTypeController extends Controller
+class CategoryController extends Controller
 {
     public function index()
     {
-        $certificate_types = CertificateType::orderBy('name', 'ASC')
-        //->with('sub_categories')
-                            ->get();
-        return response()->json(['certificate_types' => $certificate_types]);
+        //
     }
 
     public function store(Request $request)
