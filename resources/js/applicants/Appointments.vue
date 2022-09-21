@@ -34,6 +34,7 @@
                                     <th>Service</th>
                                     <th>Date</th>
                                     <th>Time</th>
+                                    <th>Complaint</th>
                                     <th>Status</th>
                                     <th></th>
                                 </tr>
@@ -47,8 +48,9 @@
                                 <tr v-for="(appointment, index) in appointments.data" :key="appointment.id">
                                     <td>{{index | addOne}}</td>
                                     <td>{{appointment.service_id != null && appointment.service != null ? appointment.service.name : ''}}</td>
-                                    <td>{{appointment.date | excelDate}}</td>
+                                    <td>{{appointment.preferred_date | excelDate}}</td>
                                     <td>{{appointment.schedule}}</td>
+                                    <td>{{appointment.complaint}}</td>
                                     <td><span class="tag tag-success">{{appointment.status == 0 ? 'Unpaid' :(appointment.status == 1 ? 'Paid' :(appointment.status == 2 ? 'Reschedule' :(appointment.status == 3 ? 'Cancelled' : (appointment.status == 8 ? 'Certificate Sent' :'Done'))))}}</span></td>
                                     <td>
                                         <div class="btn btn-group">

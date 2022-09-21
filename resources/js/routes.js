@@ -23,6 +23,12 @@ Vue.component('ApplicantProfile',              ApplicantProfile);
     Vue.component('ApplicantAppointmentForm',  ApplicantAppointmentForm);
     Vue.component('ApplicantPaymentForm',      ApplicantPaymentForm);
 
+//Blog Components
+import BlogPosts        from './blog/Posts.vue';
+import BlogPost        from './blog/Post.vue';
+
+Vue.component('BlogPost',          BlogPost);
+Vue.component('BlogPosts',         BlogPosts);
 
 //Chat Components
 import BranchAdmin  from './branches/Admin.vue';
@@ -375,18 +381,22 @@ Vue.component('UserFormUser',       UserFormUser);
 
 let routes = [
 //Applicant Module
-    {path: '/applicants',                   component: ApplicantDashboard},
-    {path: '/applicants/appointment/:id',   component: ApplicantAppointment},
-    {path: '/applicants/appointments',      component: ApplicantAppointments},
-    {path: '/applicants/dashboard',         component: ApplicantDashboard},
-    {path: '/applicants/payments',          component: ApplicantPayments},
-    {path: '/applicants/payment/:id',       component: ApplicantPayment},
-    {path: '/applicants/profile',           component: ApplicantProfile},
+    {path: '/app',                   component: ApplicantDashboard},
+    {path: '/app/appointment/:id',   component: ApplicantAppointment},
+    {path: '/app/appointments',      component: ApplicantAppointments},
+    {path: '/app/dashboard',         component: ApplicantDashboard},
+    {path: '/app/payments',          component: ApplicantPayments},
+    {path: '/app/payment/:id',       component: ApplicantPayment},
+    {path: '/app/profile',           component: ApplicantProfile},
 
 
 //Dashboard Module
     {path: '/home',             component: ApplicantDashboard},
     {path: '/dashboard',        component: DashboardMain},
+
+//Blog Module
+    {path: '/blogs',             component: BlogPosts},
+    {path: '/blogs/:id',         component: BlogPost},
 
 //Chats Links
     {path: '/branches',         component: BranchAll},
@@ -412,45 +422,6 @@ let routes = [
 
 //Network Checkers Module
     {path: '/internet', component: NetworkDashboard},
-
-//Learning Module
-    //Administrator Area Sub Module
-    {path: '/learn/admin_area',                 component: AdminCourses},
-    {path: '/learn/admin_area/categories',      component: AdminCategories},
-    {path: '/learn/admin_area/course/:id',      component: AdminCourse},
-    {path: '/learn/admin_area/courses',         component: AdminCourses},
-    {path: '/learn/admin_area/exam/:id',        component: AdminExam},
-    {path: '/learn/admin_area/exams',           component: AdminExams},
-    {path: '/learn/admin_area/exam_results',    component: AdminExamResults},
-    {path: '/learn/admin_area/exam_results/:id',component: AdminExamResult},
-    {path: '/learn/admin_area/exam_result/:id', component: AdminResult},
-    {path: '/learn/admin_area/lesson/:id',      component: AdminLesson},
-    {path: '/learn/admin_area/result/:id',      component: AdminResult},
-    //{path: '/admin_area/result/:id', component: AdminResult},
-
-    //Student Area Sub Module
-    {path: '/learn/student_area',               component: StudentCourses},
-    {path: '/learn/student_area/course/:id',    component: StudentCourse},
-    {path: '/learn/student_area/courses',       component: StudentCourses},
-    {path: '/learn/student_area/exams',         component: StudentExams},
-    {path: '/learn/student_area/lesson/:id',    component: StudentLesson},
-    {path: '/learn/student_area/result/:id',    component: StudentResult},
-    {path: '/learn/student_area/results',       component: StudentResults},
-
-    //Tutor Area Sub Module
-    {path: '/learn/tutor_area', component: TutorCourses},
-    {path: '/learn/tutor_area/course/:id', component: TutorCourse},
-    {path: '/learn/tutor_area/courses', component: TutorCourses},
-    {path: '/learn/tutor_area/exams', component: TutorExams},
-    {path: '/learn/tutor_area/exam/:id', component: AdminExam},
-    {path: '/learn/tutor_area/lesson/:id', component: TutorLesson},
-    {path: '/learn/tutor_area/result/:id', component: TutorResult},
-
-    {path: '/student_area/exams', component: LmsStdExams},
-    //{path: '/student_area/lesson/:id', component: LmsStdLesson},
-    {path: '/tutor_area/courses', component: LmsTutCourses},
-    {path: '/tutor_area/exams', component: LmsTutExams},
-
 //Notice Board Module
     {path: '/notices', component: NoticeAll},
     {path: '/notices/admin', component: NoticeAdmin},
@@ -464,9 +435,6 @@ let routes = [
     {path: '/policies/admin',       component: PoliciesAdmin},
     {path: '/policies/view/:id',    component: PoliciesView},
 
-//Profile Module
-    {path: '/profile', component: Profile},
-    
 //Settings Module
     {path: '/settings/branches',        component: BranchAdmin},
     {path: '/settings/departments',     component: DepartmentAdmin},

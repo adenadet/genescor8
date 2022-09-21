@@ -191,21 +191,18 @@ class UserController extends Controller
     public function profile()
     {
         $areas = Area::select('id', 'name')->where('state_id', 25)->orderBy('name', 'ASC')->get();
-        $branches = Branch::select('id', 'name')->orderBy('name', 'ASC')->get();
-        $departments = Department::select('id', 'name')->orderBy('name', 'ASC')->get();
         $nok = NextOfKin::where('user_id', auth('api')->id())->first();
         $states = State::orderBy('name', 'ASC')->get();
-        $user = User::where('id', auth('api')->id())->with('area')->with('state')->with('branch')->first();
-        
+        $user = User::where('id', auth('api')->id())->with('area')->with('state')->first();
+        //$nations = Country::orderBy('name', 'ASC')->get();
         return response()->json([
-            'nations' => Country::orderBy('name', 'ASC')->get(),
+            //'nations' => Country::orderBy('name', 'ASC')->get(),
             'areas' => $areas,
             'user' => $user,
-            'branches' => $branches,
-            'departments' => $departments,
             'nok' => $nok,
             'states' => $states,
-            'patient' => Patient::where('user_id',  auth('api')->id())->first(),       
+            //'nations' => $nations,
+            //'patient' => Patient::where('user_id',  auth('api')->id())->first(),       
         ]);
     }
     

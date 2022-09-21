@@ -52,7 +52,7 @@ class AuthController extends Controller
             //'bvn'           => 'nullable|number', 
             'email'         => 'required|email|unique:users,email', 
             'password'      => 'required|string|min:8', 
-            'user_type'     => 'required|integer',      
+            //'user_type'     => 'required|integer',      
         ]);
 
         $user = User::create([

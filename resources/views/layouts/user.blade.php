@@ -22,10 +22,7 @@
         <p>Sidebar content</p>
         </div>
     </aside>
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-inline">Squarem Knight Prince Consultancy</div>
-        <strong>Copyright &copy; 2019-<?= date('Y') ?> <a href="https://adminlte.io">Genescor </a>.</strong> All rights reserved.
-    </footer>
+    @include('partials.home.footer')
 </div>
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>

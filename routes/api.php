@@ -3,8 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+Route::namespace('App\Http\Controllers\Api\Blogs')->name('api.blogs.')->prefix('/blogs')->group(base_path('routes/api/blog.php'));
 Route::namespace('App\Http\Controllers\Api\Chats')->middleware('auth:api')->name('api.chats.')->group(base_path('routes/api/chats.php'));
 Route::namespace('App\Http\Controllers\Api\EMR')->middleware('auth:api')->name('api.emr.')->group(base_path('routes/api/emr.php'));
+Route::namespace('App\Http\Controllers\Api\Pharmacy')->name('api.pharmacy.')->prefix('/pharmacy')->group(base_path('routes/api/pharmacy.php'));
 Route::namespace('App\Http\Controllers\Api\Ticketing')->middleware('auth:api')->name('api.tickets.')->group(base_path('routes/api/ticket.php'));
 Route::namespace('App\Http\Controllers\Api\Ums')->middleware('auth:api')->name('api.ums.')->group(base_path('routes/api/ums.php'));
 

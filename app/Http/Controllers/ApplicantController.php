@@ -6,6 +6,100 @@ use Illuminate\Http\Request;
 
 class ApplicantController extends Controller
 {
+    public function chats()
+    {
+        $params = [
+            'page_title' => 'Chats',
+        ];
+        return view('applicant')->with($params);
+    }
+
+    public function contacts()
+    {
+        $params = [
+            'page_title' => 'Contacts',
+        ];
+        return view('applicant')->with($params);
+    }
+
+    public function dashboard()
+    {
+        $params = [
+            'page_title' => 'Dashboard',
+        ];
+        return view('applicant')->with($params);
+    }
+
+    public function departments()
+    {
+        $params = [
+            'page_title' => 'Departments',
+        ];
+        return view('applicant')->with($params);
+    }
+
+    public function internet()
+    {
+        $params = [
+            'page_title' => 'Internet',
+        ];
+        return view('applicant')->with($params);
+    }
+
+    public function notices()
+    {
+        $params = ['page_title' => 'Notice Board',];
+        return view('applicant')->with($params);
+    }
+
+    public function policies()
+    {
+        $params = [
+            'page_title' => 'Policies',
+        ];
+        return view('applicant')->with($params);
+    }
+
+    public function profile()
+    {
+        $params = [
+            'page_title' => 'Profile',
+        ];
+        return view('applicant')->with($params);
+    }
+
+    public function settings()
+    {
+        $params = [
+            'page_title' => 'Settings',
+        ];
+        return view('applicant')->with($params);
+    }
+
+    public function staff_month()
+    {
+        $params = [
+            'page_title' => 'Staff of the Month',
+        ];
+        return view('applicant')->with($params);
+    }
+
+    public function ticketing()
+    {
+        $params = [
+            'page_title' => 'Tickets',
+        ];
+        return view('applicant')->with($params);
+    }
+
+    public function users()
+    {
+        $params = [
+            'page_title' => 'Users',
+        ];
+        return view('applicant')->with($params);
+    }
+
     public function index()
     {
         $params = [
@@ -14,67 +108,31 @@ class ApplicantController extends Controller
         return view('applicant')->with($params);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
