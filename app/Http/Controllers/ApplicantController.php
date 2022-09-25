@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 
 class ApplicantController extends Controller
 {
+    public function appointments()
+    {
+        $params = [
+            'page_title' => 'Appointments',
+        ];
+        return view('applicant')->with($params);
+    }
+
     public function chats()
     {
         $params = [

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix'=>'app'], function () {
 
     Route::get('/',             [App\Http\Controllers\ApplicantController::class, 'chats'])->name('chats');
+    Route::get('appointments',  [App\Http\Controllers\ApplicantController::class, 'appointments'])->name('appointments');
     Route::get('chats',         [App\Http\Controllers\ApplicantController::class, 'chats'])->name('chats');
     Route::get('contacts',      [App\Http\Controllers\ApplicantController::class, 'contacts'])->name('contacts');
     Route::get('dashboard',     [App\Http\Controllers\ApplicantController::class, 'dashboard'])->name('dashboard');
@@ -15,6 +16,7 @@ Route::group(['prefix'=>'app'], function () {
     Route::get('ticket',        [App\Http\Controllers\ApplicantController::class, 'ticketing'])->name('ticketing');
     
     //Auto Redirect
+    Route::get('appointments/{any}',       [App\Http\Controllers\ApplicantController::class, 'appointments'])->where('any', '.*')->name('appointments');
     Route::get('chats/{any}',              [App\Http\Controllers\ApplicantController::class, 'chats'])->where('any', '.*')->name('chats');
     Route::get('departments/{any}',        [App\Http\Controllers\ApplicantController::class, 'departments'])->where('any', '.*');
     Route::get('internet/{any}',           [App\Http\Controllers\ApplicantController::class, 'internet'])->where('any', '.*');

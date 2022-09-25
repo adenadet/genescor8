@@ -1,7 +1,7 @@
 <template>
     <div class="card direct-chat direct-chat-warning">
         <div class="card-header">
-            <h3 class="card-title">Chats</h3>
+            <h3 class="card-title">Messages</h3>
             <div class="card-tools">
                 <span data-toggle="tooltip" title="3 New Messages" class="badge badge-warning">3</span>
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <router-link to="/chats"><button class="btn btn-primary">See All</button></router-link>
+            <router-link to="/chats"><button class="btn btn-danger">See All</button></router-link>
         </div>
     </div>
 </template>

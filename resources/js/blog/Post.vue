@@ -1,45 +1,26 @@
 <template>
 <section class="content-header">
     <div class="container-fluid">
-        <div class="modal fade" id="paymentModal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Make Payment</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <ApplicantPaymentForm />
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
-            <div class="col-3">
+            <div class="col-md-8 col-sm-12">
                 <div class="card card-widget">
                     <div class="card-header">
                         <div class="user-block">
-                            <img class="img-circle" src="" alt="User Image">
-                            <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
+                            <img class="img-circle" :src="'/img/profile/'+(post.author != null ? post.author.image : 'default.png')" alt="User Image">
+                            <span class="username"><a class="text-danger">{{post.author.first_name+' '+post.author.last_name}}</a></span>
                             <span class="description">Shared publicly - 7:30 PM Today</span>
                         </div>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" title="Mark as read"><i class="far fa-circle"></i></button>
-                            <button type="button" class="btn btn-tool"><i class="fas fa-minus"></i></button>
-                            <button type="button" class="btn btn-tool"><i class="fas fa-times"></i></button>
-                        </div>
                     </div>
+                    <img class="card-img-top" :src="'/img/gallery/'+(post.image != null ? post.image : '1.jpg')" alt="Card image cap"/>
                     <div class="card-body">
-                        <img class="img-fluid pad" src="" alt="Photo">
-
-                        <p>I took this photo this morning. What do you guys think?</p>
+                        <p>{{post.content}}</p>
                         <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i> Share</button>
                         <button type="button" class="btn btn-default btn-sm"><i class="far fa-thumbs-up"></i> Like</button>
-                        <span class="float-right text-muted">127 likes - 3 comments</span>
+                        <span class="float-right text-muted">{{post.likes_count}} likes - {{post.comments_count}} comments</span>
                     </div>
               
                     <div class="card-footer card-comments">
-                        <div class="card-comment">
+                        <div class="card-comment" v-for="post_comment in comments">
                             <img class="img-circle img-sm" src="" alt="User Image">
                             <div class="comment-text">
                                 <span class="username">Maria Gonzales<span class="text-muted float-right">8:03 PM Today</span></span>
@@ -72,13 +53,14 @@
     export default {
         data(){
             return {
-                blog: {},
+                post: {},
             }
         },
         methods:{
             getAllInitials(){
                 axios.get('/api/blogs/posts/'+this.$route.params.id).then(response =>{
-                    this.blog = response.data.blog;
+                    this.post = response.data.blog;
+                    this.comments = response.data.comments;
                     toast.fire({icon: 'success',title: 'Appointment loaded successfully',});
                 })
                 .catch(()=>{
@@ -88,13 +70,6 @@
                         title: 'Appointment not loaded successfully',
                     })
                 });
-            },
-            makePayment(appointment){
-                this.$Progress.start();
-                this.paySpecific = true;
-                Fire.$emit('PaymentDataFill', appointment);
-                $('#paymentModal').modal('show');
-                this.$Progress.finish();
             },
         },
         mounted() {

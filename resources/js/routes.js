@@ -64,20 +64,27 @@ import ContactSingle    from './components/contacts/Single.vue';
 Vue.component('ContactAll', ContactAll);
 Vue.component('ContactSingle', ContactSingle);
 
+import DashboardAppointment from './dashboard/Appointment.vue';
+import DashboardActivities  from './dashboard/Activities.vue';
+
 import DashboardMain        from './dashboard/Main.vue';
 import DashboardBirthday    from './dashboard/Birthday.vue';
 import DashboardChat        from './dashboard/Chat.vue';
 import DashboardNewStaff    from './dashboard/NewStaff.vue';
 import DashboardNotice      from './dashboard/Notice.vue';
+import DashboardPrescription from './dashboard/Prescription.vue';
 import DashboardStaffMonth  from './dashboard/StaffMonth.vue';
 import DashboardSummary     from './dashboard/Summary.vue';
 import DashboardTicket      from './dashboard/Ticket.vue';
 
 Vue.component('DashboardMain',          DashboardMain);
+Vue.component('DashboardActivities',    DashboardActivities);
+Vue.component('DashboardAppointment',   DashboardAppointment);
 Vue.component('DashboardBirthday',      DashboardBirthday);
 Vue.component('DashboardChat',          DashboardChat);
 Vue.component('DashboardNewStaff',      DashboardNewStaff);
 Vue.component('DashboardNotice',        DashboardNotice);
+Vue.component('DashboardPrescription',  DashboardPrescription);
 Vue.component('DashboardStaffMonth',    DashboardStaffMonth);
 Vue.component('DashboardSummary',       DashboardSummary);
 Vue.component('DashboardTicket',        DashboardTicket);
@@ -179,79 +186,6 @@ Vue.component('LmsDetailCourseLessons', LmsDetailCourseLessons);
 Vue.component('LmsDetailQuestions', LmsDetailQuestions);
 Vue.component('LmsDetailSubCategory', LmsDetailSubCategory);
 
-//LMS Module 
-    //Admin Area
-    import AdminCategories  from './learn/admins/Categories.vue';
-    import AdminCourse      from './learn/admins/Course.vue';
-    import AdminCourses     from './learn/admins/Courses.vue';
-    import AdminExam        from './learn/admins/Exam.vue';
-    import AdminExams       from './learn/admins/Exams.vue';
-    import AdminExamResult  from './learn/admins/ExamResult.vue';
-    import AdminExamResults from './learn/admins/ExamResults.vue';
-    import AdminLesson      from './learn/admins/Lesson.vue';
-    import AdminResult      from './learn/admins/Result.vue';
-    import AdminSubCategory from './learn/admins/SubCategory.vue'; 
-
-    Vue.component('AdminCategories',    AdminCategories);
-    Vue.component('AdminCourse',        AdminCourse);
-    Vue.component('AdminCourses',       AdminCourses);
-    Vue.component('AdminExam',          AdminExam);
-    Vue.component('AdminExams',         AdminExams);
-    Vue.component('AdminLesson',        AdminLesson);
-    Vue.component('AdminSubCategory',   AdminSubCategory);
-
-
-    //Student Area
-    import StudentCourse                from    './learn/students/Course.vue';
-    import StudentCourses               from    './learn/students/Courses.vue';
-    import StudentExams                 from    './learn/students/Exams.vue';
-    import StudentLesson                from    './learn/students/Lesson.vue';
-    import StudentLessonDetail          from    './learn/students/LessonDetail.vue';
-    import StudentResult                from    './learn/students/Result.vue';
-    import StudentResults               from    './learn/students/Results.vue';
-
-    Vue.component('StudentCourse',          StudentCourse);
-    Vue.component('StudentCourses',         StudentCourses);
-    Vue.component('StudentExams',           StudentExams);
-    Vue.component('StudentLesson',          StudentLesson);
-    Vue.component('StudentLessonDetail',    StudentLessonDetail);
-
-    //Tutor Area 
-    import TutorCourse    from './learn/tutors/Course.vue';
-    import TutorCourses   from './learn/tutors/Courses.vue';
-    import TutorExams     from './learn/tutors/Exams.vue';
-    import TutorLesson    from './learn/tutors/Lesson.vue';
-    import TutorLessons   from './learn/tutors/Lessons.vue';
-    import TutorResult    from './learn/tutors/Lesson.vue';
-
-    Vue.component('TutorCourse',        TutorCourse);
-    Vue.component('TutorCourses',       TutorCourses);
-    Vue.component('TutorExams',         TutorExams);
-    Vue.component('TutorLessons',       TutorLessons);
-    //Vue.component('TutorResult',        TutorResults);
-
-    //Forms
-    import LmsFormAssignTutor   from './learn/forms/AssignTutor.vue';
-    import LmsFormAssignUser    from './learn/forms/AssignUser.vue';
-    import LmsFormCategory      from './learn/forms/Category.vue';
-    import LmsFormCourse        from './learn/forms/Course.vue';
-    import LmsFormExam          from './learn/forms/Exam.vue';
-    import LmsFormLesson        from './learn/forms/Lesson.vue';
-    import LmsFormLessons       from './learn/forms/Lessons.vue';
-    import LmsFormOption        from './learn/forms/Option.vue';
-    import LmsFormQuestion      from './learn/forms/Question.vue';
-    import LmsFormSubCategory   from './learn/admins/forms/SubCategory.vue';
-
-    Vue.component('LmsFormAssignTutor',     LmsFormAssignTutor);
-    Vue.component('LmsFormAssignUser',      LmsFormAssignUser);
-    Vue.component('LmsFormCategory',        LmsFormCategory);
-    Vue.component('LmsFormCourse',          LmsFormCourse);
-    Vue.component('LmsFormExam',            LmsFormExam);
-    Vue.component('LmsFormLesson',          LmsFormLesson);
-    Vue.component('LmsFormLessons',         LmsFormLessons);
-    Vue.component('LmsFormOption',          LmsFormOption);
-    Vue.component('LmsFormQuestion',        LmsFormQuestion);
-    Vue.component('LmsFormSubCategory',     LmsFormSubCategory);
 
 //Network Checkers
 import NetworkCard      from './components/internet/Card.vue';
@@ -317,12 +251,7 @@ Vue.component('SocialDashboard',    SocialDashboard)
 Vue.component('SocialForum',        SocialForum)
 Vue.component('SocialForums',       SocialForums)
 
-//Settings Modules Components
-import StgCourse from './components/settings/Course.vue';
-import StgCourses from './components/settings/Courses.vue';
 
-Vue.component('StgCourse', StgCourse);
-Vue.component('StgCourses', StgCourses);
 
 //Settings Modules Components
 import SOMNominate      from './som/Nominate.vue';
@@ -334,6 +263,7 @@ Vue.component('SOMNominate', SOMNominate);
 Vue.component('SOMView',     SOMView);
 Vue.component('SOMVote',     SOMVote);
 Vue.component('SOMVote',     SOMVote);
+
 
 //Ticketing Module Components
 import TicketAdmin      from './ticketing/Admin.vue';
@@ -395,8 +325,9 @@ let routes = [
     {path: '/dashboard',        component: DashboardMain},
 
 //Blog Module
-    {path: '/blogs',             component: BlogPosts},
-    {path: '/blogs/:id',         component: BlogPost},
+    {path: '/stories',             component: BlogPosts},
+    {path: '/stories/posts',       component: BlogPosts},
+    {path: '/stories/post/:id',    component: BlogPost},
 
 //Chats Links
     {path: '/branches',         component: BranchAll},
@@ -414,14 +345,6 @@ let routes = [
     {path: '/departments',       component:DepartmentAll},
     {path: '/departments/:id',   component:DepartmentSingle},
 
-//EServices Links
-    {path: '/eservices/front_office',                   component:EServiceFrontAppointments},
-    {path: '/eservices/front_office/appointments',      component:EServiceFrontAppointments},
-    {path: '/eservices/front_office/appointment/:id',   component:EServiceFrontAppointment},
-    {path: '/eservices/front_office/payments',          component:EServicePayments},
-
-//Network Checkers Module
-    {path: '/internet', component: NetworkDashboard},
 //Notice Board Module
     {path: '/notices', component: NoticeAll},
     {path: '/notices/admin', component: NoticeAdmin},
@@ -435,12 +358,6 @@ let routes = [
     {path: '/policies/admin',       component: PoliciesAdmin},
     {path: '/policies/view/:id',    component: PoliciesView},
 
-//Settings Module
-    {path: '/settings/branches',        component: BranchAdmin},
-    {path: '/settings/departments',     component: DepartmentAdmin},
-    {path: '/settings/course/:id',      component: StgCourse},
-    {path: '/settings/courses',         component: StgCourses},
-
 //Socials Module
     {path: '/socials/album/:id',    component: SocialAlbum},
     {path: '/socials/albums',       component: SocialAlbums},
@@ -448,13 +365,6 @@ let routes = [
     {path: '/socials/forum/:id',    component: SocialForum},
     {path: '/socials/forums',       component: SocialForums},
 
-//Staff of the Month Module
-    {path: '/staff_month',                component: SOMWinners},
-    {path: '/staff_month/nominate',       component: SOMNominate},
-    {path: '/staff_month/view/:month',    component: SocialAlbum},
-    {path: '/staff_month/vote',           component: SOMVote},
-    {path: '/staff_month/winners',        component: SOMWinners},
-    //{path: '/staff_month/dashboard',    component: SocialDashboard},
 
 //Ticketing Modules
     {path: '/ticketing',                component: TicketPersonal},

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Blog\Post;
 //use App\Models\Blog\PostTag;
+use App\Models\Blog\Comment;
 
 class PostController extends Controller
 {
@@ -19,7 +20,7 @@ class PostController extends Controller
     {
         return response()->json([
             'blogs' => Post::with(['likes', 'author', 'category', 'approved'])->withCount('comments', 'likes')
-            ->latest()->get(),
+            ->latest()->paginate(12),
         ], 200);
     }
 
@@ -67,8 +68,9 @@ class PostController extends Controller
         if(!$post){return response(['message' => 'Post not found'], 403);}
         
         return response()->json([
-            'blog' => Post::where('id', '=', $id)->with(['author', 'category', 'approved'])->withCount('comments', 'likes')
+            'blog' => Post::where('id', '=', $id)->with(['author', 'category', 'approved', 'comments.user'])->withCount('comments', 'likes')
             ->first(),
+            'comments' => Comment::where('post_id', '=', $id)->with('user')->paginate(5),
         ]);
     }
 

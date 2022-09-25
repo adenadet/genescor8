@@ -35,10 +35,12 @@
         <div class="card">
             <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                    <li class="nav-item"><a class="nav-link active" href="#bio-data" data-toggle="tab">Bio Data</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#bio-data" data-toggle="tab"><i class="far fa-user mr-1"></i> Bio Data</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#billing" data-toggle="tab"><i class="fa fa-money-bill mr-1"></i>Billing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#password" data-toggle="tab"><i class="fa fa-user-shield mr-1"></i>Security</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#notification" data-toggle="tab"><i class="fa fa-bell mr-1"></i>Notifications</a></li>
                     <li class="nav-item"><a class="nav-link" href="#next-of-kin" data-toggle="tab">Next of Kin</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#applicant" data-toggle="tab">Applicant Detail</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#password" data-toggle="tab">Password</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#applicant" data-toggle="tab"><i class="fa fa-notes-medical mr-1"></i>Medical Details</a></li>
                 </ul>
             </div>
             <div class="card-body">

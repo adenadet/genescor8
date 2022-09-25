@@ -1,51 +1,23 @@
 <template>
 <section class="content-header">
     <div class="container-fluid">
-        <div class="modal fade" id="paymentModal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Make Payment</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <ApplicantPaymentForm />
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
-            <div class="col-3">
+            <div class="col-4" v-for="post in posts.data" :key="post.id">
                 <div class="card card-widget">
                     <div class="card-header">
                         <div class="user-block">
-                            <img class="img-circle" src="img/user1-128x128.jpg" alt="User Image">
-                            <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
+                            <img class="img-circle" :src="'/img/profile/'+(post.author != null ? post.author.image : 'default.png')" alt="User Image">
+                            <span class="username"><a class="text-danger">{{post.author.first_name+' '+post.author.last_name}}</a></span>
                             <span class="description">Shared publicly - 7:30 PM Today</span>
-                            </div>
-                            <div class="card-tools">
-                            <button type="button" class="btn btn-tool" title="Mark as read">
-                                <i class="far fa-circle"></i>
-                            </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                <i class="fas fa-times"></i>
-                            </button>
                         </div>
                     </div>
-                
+                    <img class="card-img-top" :src="'img/gallery/'+(post.image != null ? post.image : '1.jpg')" alt="Card image cap"/>
                     <div class="card-body">
-                        <img class="img-fluid pad" src="img/photo2.png" alt="Photo">
-
+                        <h3><router-link class="text-danger" :to="'/stories/post/'+post.id">{{post.topic}}</router-link></h3>
                         <p>I took this photo this morning. What do you guys think?</p>
                         <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i> Share</button>
                         <button type="button" class="btn btn-default btn-sm"><i class="far fa-thumbs-up"></i> Like</button>
                         <span class="float-right text-muted">127 likes - 3 comments</span>
-                        <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i> Share</button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="far fa-thumbs-up"></i> Like</button>
-                        <span class="float-right text-muted">45 likes - 2 comments</span>
                     </div>  
                 </div>
             </div>
@@ -57,20 +29,20 @@
 export default {
     data(){
         return {
-            appointment: {},
+            posts: {},
         }
     },
     methods:{
         getAllInitials(){
-            axios.get('/api/blog/posts/').then(response =>{
-                this.appointment = response.data.appointment;
-                toast.fire({icon: 'success',title: 'Appointment loaded successfully',});
+            axios.get('/api/blogs/posts').then(response =>{
+                this.posts = response.data.blogs;
+                toast.fire({icon: 'success',title: 'Blog Posts loaded successfully',});
             })
             .catch(()=>{
                 this.$Progress.fail();
                 toast.fire({
                     icon: 'error',
-                    title: 'Appointment not loaded successfully',
+                    title: 'Blog Posts not loaded successfully',
                 })
             });
         },

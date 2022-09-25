@@ -3,22 +3,27 @@
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block bg-grey">
-            <a href="/applicants" class="nav-link">Home</a>
-        </li>
+        <li class="nav-item d-none d-sm-inline-block bg-grey"><a href="/" class="nav-link">Home</a></li>
         @if(Auth::user()->hasRole('Consultant'))
         <li class="nav-item d-none d-sm-inline-block">
             <a href="/consultants" class="nav-link">Consultant Area</a>
         </li> 
         @endif
+        @if(Auth::user()->hasRole('Consultant'))
         <li class="nav-item d-none d-sm-inline-block">
             <a href="/agency" class="nav-link">Agency Area</a>
         </li> 
+        @endif
+        @if(Auth::user()->hasRole('Staff'))
         <li class="nav-item d-none d-sm-inline-block">
             <a href="/staffs" class="nav-link">Staff Area</a>
         </li>
+        @endif
         <li class="nav-item d-none d-sm-inline-block">
             <a href="/pharmacy" class="nav-link">Pharmacy</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/stories" class="nav-link">Stories</a>
         </li> 
     </ul>
     <ul class="navbar-nav ml-auto">

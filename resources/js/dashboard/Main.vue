@@ -23,6 +23,7 @@ import moment from 'moment'
 export default {
     data(){
         return {
+            appointment: {},
             birthdays: [],
             contacts: [],
             editMode: false,

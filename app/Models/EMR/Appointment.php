@@ -22,15 +22,15 @@ class Appointment extends Structure
     }
 
     public function radiologist(){
-        return $this->belongsTo('App\Models\EMR\Employee', 'radiologist_id', 'id');
+        return $this->belongsTo('App\Models\User', 'radiologist_id', 'id');
     }
     
     public function medical_officer(){
-        return $this->belongsTo('App\Models\EMR\Employee', 'doctor_id', 'id');
+        return $this->belongsTo('App\Models\User', 'doctor_id', 'id');
     }
     
     public function front_officer(){
-        return $this->belongsTo('App\Models\EMR\Employee', 'front_officer_id', 'id');
+        return $this->belongsTo('App\Models\User', 'front_officer_id', 'id');
     }
 
     public function creator(){

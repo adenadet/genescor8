@@ -4,70 +4,81 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use App\Models\User;
+use App\Models\EMR\Agency;
+use App\Models\EMR\Doctor;
+use App\Models\EMR\Hospital;
+
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'user_type' => ['required', 'string'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string'],
+            'agency_type' => ['sometimes', 'numeric'],
+            'provider_type' => ['sometimes', 'numeric'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $user = User::create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        
+        if ($data['user_type'] == 'agency'){
+            $agency = Agency::create([
+                'name' => $data['agency_name'],
+                'agency_type' => $data['agency_type'],
+                'created_by' => $user->id,
+            ]);
+            $user->assignRole('Agency');
+        }
+        else if (($data['user_type'] == 'provider') && ($data['provider_type'] == 1)){
+            $hospital = Hospital::create([
+                'name' => $data['hospital_name'],
+                'created_by' => $user->id,
+            ]);
+            $doctor = Doctor::create([
+                'user_id' => $user_id,
+                'hospital_id' => $hospital->id,
+                'hospital_name' => $hospital->name,
+                'created_by' => $user->id,
+            ]);
+
+            $user->assignRole('Consultant', 'Hospital');
+        } 
+        else if (($data['user_type'] == 'provider') && ($data['provider_type'] != 1)){
+            $doctor = Doctor::create([
+                'user_id' => $user->id,
+                'hospital_name' => $data['hospital_name'],
+                'created_by' => $user->id,
+            ]);
+
+            $user->assignRole('Consultant');
+        } 
+        return $user; 
     }
 }

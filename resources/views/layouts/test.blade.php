@@ -31,53 +31,32 @@
                             <div class="col-sm-7">
                                 <div class="card-body login-card-body">
                                     <h4 style="font-style: normal; font-weight: 500;">The Online Resource App for Sickle Cell Disease Warriors</h4>
-                                    <h3 style="font-style: normal; font-weight: 600;" class="mt-3">Sign In </h3>
-                                    <form action="{{ route('login') }}" method="post">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Email address</label>
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" placeholder="Email/Username" value="{{old('unique_id')}}">
-                                                <div class="input-group-append">
-                                                    <div class="input-group-text"><span class="fas fa-envelope"></span></div>
-                                                </div>
-                                                @error('email')
-                                                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                                                @enderror 
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Password</label>
-                                            <div class="input-group mb-3">
-                                                <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                                                <div class="input-group-append">
-                                                    <div class="input-group-text"><span class="fas fa-lock"></span></div>
-                                                </div>
-                                                @error('password')
-                                                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <div class="icheck-primary">
-                                                    <input type="checkbox" id="remember">
-                                                    <label for="remember">Remember Me</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-5">
-                                                <a href="/forgot-password">Forgot Password</a>    
-                                            </div>
-                                        </div>
-                                        <div class="form-group mt-5">
-                                            <button type="submit" class="btn btn-danger btn-block form-control">Sign In</button>
-                                        </div>
-                                    </form>
-                                    <p class="text-center">Don't have an Account? <a href="{{route('register')}}">Sign Up Here</a></p>
+                                    <h3 style="font-style: normal; font-weight: 600;" class="mt-3">Create Account</h3>
                                     <div class="row">
-                                        <p class="text-center col-4 offset-1 d-flex text-danger"><i class="fa fa-phone-alt fa-xs mr-1"></i>+2348033328792</p>
-                                        <p class="text-center col-4 offset-1 d-flex text-danger"><i class="far fa-envelope fa-xs mr-1"></i>info@genescor.com</p>
+                                        <div class="col-12">
+                                            <ul class="nav nav-pills nav-fill" id="custom-tabs-three-tab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="auth-pill nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Patient</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class=" auth-pill nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Provider</a>
+                                                </li>
+                                                <li class="auth-pill nav-item">
+                                                    <a class="nav-link auth-pill" id="custom-tabs-three-messages-tab" data-toggle="pill" href="#custom-tabs-three-messages" role="tab" aria-controls="custom-tabs-three-messages" aria-selected="false">Agency</a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
+                                    <div class="tab-content" id="custom-tabs-three-tabContent">
+                                        <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">@include('partials.user.patient-form')</div>
+                                        <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">@include('partials.user.provider-form')</div>
+                                        <div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel" aria-labelledby="custom-tabs-three-messages-tab">@include('partials.user.agency-form')</div>
+                                    </div>
+                                </div>
+                                <p class="text-center">Already have an Account? <a href="{{route('login')}}">Login Here</a></p>
+                                <div class="row">
+                                    <p class="text-center col-4 offset-1 d-flex text-danger"><i class="fa fa-phone-alt fa-xs mr-1"></i>+2348033328792</p>
+                                    <p class="text-center col-4 offset-1 d-flex text-danger"><i class="far fa-envelope fa-xs mr-1"></i>info@genescor.com</p>
                                 </div>
                             </div>
                         </div>

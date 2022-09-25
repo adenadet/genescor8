@@ -8,6 +8,15 @@ class BlogController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        return view('stories');
+    }
+
+    public function welcome()
+    {
+        $params = [
+            'title' => 'Welcome',
+            'page_title' => 'Welcome',
+        ];
+        return view('stories')->with($params);
     }
 }
