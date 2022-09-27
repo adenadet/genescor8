@@ -8,7 +8,11 @@ class BlogController extends Controller
 {
     public function index()
     {
-        return view('stories');
+        $params = [
+            'title' => 'Stories',
+            'page_title' => 'Survival Stories, Success Stories',
+        ];
+        return view('stories')->with($params);
     }
 
     public function welcome()

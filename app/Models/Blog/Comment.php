@@ -9,7 +9,7 @@ class Comment extends Structure
 {
     protected $primaryKey = 'id';
     protected $table = 'blog_comments';
-    protected $fillable = array('topic', 'image', 'user_id', 'content', 'category_id', 'status', 'approved_by', 'published_date', 'created_at', 'updated_at', 'deleted_at', 'deleted_by'); 
+    protected $fillable = array('post_id', 'user_id', 'message', 'created_at', 'updated_at', 'deleted_at', 'deleted_by'); 
 
     public function approved(){
         return $this->belongsTo('App\Models\User', 'approved_by', 'id');

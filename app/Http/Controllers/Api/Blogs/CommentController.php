@@ -45,13 +45,13 @@ class CommentController extends Controller
         if(!$post){return response(['message' => 'Post not found'], 403);}
 
         $comment = Comment::create([
-            'message' => $request->input('comment'),
-            'post' => $id,
+            'message' => $request->input('content'),
+            'post_id' => $id,
             'user_id' => auth('api')->id(),
         ]);
 
         return response()->json([
-            'post'  => $post->comments()->with('user:id, first_name, last_name, image')->get(),
+            'post'  => $post->comments()->with('author:id,first_name,last_name,image')->get(),
             //'blogs' => Post::with(['author', 'category', 'approved'])->withCount('comments', 'likes')->latest()->paginate(5),
             'message' => 'Comment Created',
         ]);

@@ -64,13 +64,15 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-
         if(!$post){return response(['message' => 'Post not found'], 403);}
         
+        $user = auth('api')->user() ?? null;
+        
         return response()->json([
-            'blog' => Post::where('id', '=', $id)->with(['author', 'category', 'approved', 'comments.user'])->withCount('comments', 'likes')
+            'blog' => Post::where('id', '=', $id)->with(['author', 'category', 'approved'])->withCount('comments', 'likes')
             ->first(),
-            'comments' => Comment::where('post_id', '=', $id)->with('user')->paginate(5),
+            'comments' => Comment::where('post_id', '=', $id)->with('author')->paginate(5),
+            'user' => $user,
         ]);
     }
 

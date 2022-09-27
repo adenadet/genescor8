@@ -14,10 +14,10 @@
                     <img class="card-img-top" :src="'img/gallery/'+(post.image != null ? post.image : '1.jpg')" alt="Card image cap"/>
                     <div class="card-body">
                         <h3><router-link class="text-danger" :to="'/stories/post/'+post.id">{{post.topic}}</router-link></h3>
-                        <p>I took this photo this morning. What do you guys think?</p>
+                        <p>{{post.content | readMore(50, '...')}}</p>
                         <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i> Share</button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="far fa-thumbs-up"></i> Like</button>
-                        <span class="float-right text-muted">127 likes - 3 comments</span>
+                        <button type="button" class="btn btn-default btn-sm"><i class="far fa-thumbs-up"></i> Like</button><br />
+                        <span class="float-right text-muted">{{post.likes_count}} likes - {{post.comments_count}} comments</span>
                     </div>  
                 </div>
             </div>

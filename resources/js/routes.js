@@ -123,33 +123,8 @@ import FormBioData from './components/partials/forms/BioData.vue';
 import FormClosure from './components/partials/forms/Closure.vue';
 import FormContact from './components/partials/forms/Contact.vue';
 import FormNextOfKin from './components/partials/forms/NextOfKin.vue';
-import FormRepayment from './components/partials/forms/Repayment.vue';
-import FormSavingsAccount from './components/partials/forms/SavingsAccount.vue';
 import FormSecurity from './components/partials/forms/Security.vue';
-import FormWithdrawal from './components/partials/forms/Withdrawal.vue';
 
-
-//Declare LMS Pages
-import LmsCategories from './components/lms/admin/Categories.vue';
-import LmsCertificates from './components/lms/admin/Certificates.vue';
-import LmsCourses from './components/lms/admin/Courses.vue';
-import LmsExams from './components/lms/admin/Exams.vue';
-
-import LmsStdCourse from './components/lms/student/Course.vue';
-import LmsStdCourses from './components/lms/student/Courses.vue';
-import LmsStdExams from './components/lms/student/Exams.vue';
-//import LmsStdLesson from './components/lms/student/Lesson.vue';
-
-import LmsTutCourses from './components/lms/tutors/Courses.vue';
-import LmsTutExams from './components/lms/tutors/Exams.vue';
-
-//Declare LMS Details
-import LmsDetailContact from './components/lms/details/Contact.vue';
-import LmsDetailCourse from './components/lms/details/Course.vue';
-import LmsDetailCourseAssignedTo from './components/lms/details/CourseAssignees.vue';
-import LmsDetailCourseLessons from './components/lms/details/CourseLessons.vue';
-import LmsDetailQuestions from './components/lms/details/Questions.vue';
-import LmsDetailSubCategory from './components/lms/details/SubCategory.vue';
 
 Vue.component('Users', Users);
 
@@ -164,40 +139,11 @@ Vue.component('FormContact', FormContact);
 Vue.component('FormNextOfKin', FormNextOfKin);
 Vue.component('FormSecurity', FormSecurity);
 
-//Declare All LMS pages
-Vue.component('LmsCategories', LmsCategories);
-Vue.component('LmsCertificates', LmsCertificates);
-Vue.component('LmsCourses', LmsCourses);
-Vue.component('LmsExams', LmsExams);
-
-Vue.component('LmsStdCourse', LmsStdCourse);
-Vue.component('LmsStdCourses', LmsStdCourses);
-Vue.component('LmsStdExams', LmsStdExams);
-//Vue.component('LmsStdLesson', LmsStdLesson);
-
-Vue.component('LmsTutCourses', LmsTutCourses);
-Vue.component('LmsTutExams', LmsTutExams);
-
-//Declare All LMS Details
-Vue.component('LmsDetailContact', LmsDetailContact);
-Vue.component('LmsDetailCourse', LmsDetailCourse);
-Vue.component('LmsDetailCourseAssignedTo', LmsDetailCourseAssignedTo);
-Vue.component('LmsDetailCourseLessons', LmsDetailCourseLessons);
-Vue.component('LmsDetailQuestions', LmsDetailQuestions);
-Vue.component('LmsDetailSubCategory', LmsDetailSubCategory);
-
-
-//Network Checkers
-import NetworkCard      from './components/internet/Card.vue';
-import NetworkDashboard from './components/internet/Dashboard.vue';
-
-Vue.component('NetworkCard',        NetworkCard);
-Vue.component('NetworkDashboard',   NetworkDashboard);
 
 //Notice Board
 import NoticeAdmin      from './notices/Admin.vue';
-import NoticeAll      from './notices/All.vue';
-import NoticeSingle from './notices/Single.vue';
+import NoticeAll        from './notices/All.vue';
+import NoticeSingle     from './notices/Single.vue';
 
 Vue.component('NoticeAll',        NoticeAll);
 Vue.component('NoticeAdmin',      NoticeAdmin);
@@ -209,22 +155,15 @@ Vue.component('NoticeSingle',     NoticeSingle);
     Vue.component('NoticeClose',     NoticeClose);
     Vue.component('NoticeForm',      NoticeForm);
 
-//Policies Components
-import PoliciesAdmin        from './policies/Admin.vue';
-import PoliciesDept         from './policies/Departmental.vue';
-import PoliciesGen          from './policies/General.vue';
-import PoliciesView         from './policies/View.vue';
+//Pharmacy Components
+import PharmacyMain         from './pharmacy/Main.vue';
+Vue.component('PharmacyMain',     PharmacyMain);
 
-import PoliciesForm         from './policies/form/New.vue';
-import PoliciesFormAssign   from './policies/form/Assign.vue';
+    import PharmacyFormNew  from './pharmacy/forms/New.vue';
+    import PharmacyFormSearch from './pharmacy/forms/Search.vue';
 
-Vue.component('PoliciesAdmin',       PoliciesAdmin);
-Vue.component('PoliciesDept',        PoliciesDept);
-Vue.component('PoliciesGen',         PoliciesGen);
-Vue.component('PoliciesView',        PoliciesView);
-
-Vue.component('PoliciesForm',        PoliciesForm);
-Vue.component('PoliciesFormAssign',  PoliciesFormAssign);
+    Vue.component('PharmacyFormNew',     PharmacyFormNew);
+    Vue.component('PharmacyFormSearch',  PharmacyFormSearch);
 
 //Profile Components
 import Profile from './profile/Profile.vue';
@@ -237,33 +176,6 @@ Vue.component('Profile',        Profile);
 Vue.component('PMFormBioData',  PMFormBioData);
 Vue.component('PMFormNOK',      PMFormNOK);
 Vue.component('PMFormPassword', PMFormPassword);
-
-//Social Modules Components
-import SocialAlbum from './components/socials/Album.vue';
-import SocialAlbums from './components/socials/Albums.vue';
-import SocialDashboard from './components/socials/Dashboard.vue';
-import SocialForum from './components/socials/Forum.vue';
-import SocialForums from './components/socials/Forums.vue';
-
-Vue.component('SocialAlbum',        SocialAlbum)
-Vue.component('SocialAlbums',       SocialAlbums)
-Vue.component('SocialDashboard',    SocialDashboard)
-Vue.component('SocialForum',        SocialForum)
-Vue.component('SocialForums',       SocialForums)
-
-
-
-//Settings Modules Components
-import SOMNominate      from './som/Nominate.vue';
-import SOMView          from './som/View.vue';
-import SOMVote          from './som/Vote.vue';
-import SOMWinners       from './som/Winners.vue';
-
-Vue.component('SOMNominate', SOMNominate);
-Vue.component('SOMView',     SOMView);
-Vue.component('SOMVote',     SOMVote);
-Vue.component('SOMVote',     SOMVote);
-
 
 //Ticketing Module Components
 import TicketAdmin      from './ticketing/Admin.vue';
@@ -342,29 +254,11 @@ let routes = [
     {path: '/contacts/staff/:id', component:ContactSingle},
 
 //Department Links
-    {path: '/departments',       component:DepartmentAll},
-    {path: '/departments/:id',   component:DepartmentSingle},
+    {path: '/departments',          component:DepartmentAll},
+    {path: '/departments/:id',      component:DepartmentSingle},
 
-//Notice Board Module
-    {path: '/notices', component: NoticeAll},
-    {path: '/notices/admin', component: NoticeAdmin},
-    {path: '/notices/:id', component: NoticeSingle},
-    //{path: '/notices', component: NoticeAll},
-
-//Profile Module
-    {path: '/policies',             component: PoliciesDept},
-    {path: '/policies/department',  component: PoliciesDept},
-    {path: '/policies/general',     component: PoliciesGen},
-    {path: '/policies/admin',       component: PoliciesAdmin},
-    {path: '/policies/view/:id',    component: PoliciesView},
-
-//Socials Module
-    {path: '/socials/album/:id',    component: SocialAlbum},
-    {path: '/socials/albums',       component: SocialAlbums},
-    {path: '/socials/dashboard',    component: SocialDashboard},
-    {path: '/socials/forum/:id',    component: SocialForum},
-    {path: '/socials/forums',       component: SocialForums},
-
+//Pharmacy Module
+    {path: '/pharmacy',             component: PharmacyMain},
 
 //Ticketing Modules
     {path: '/ticketing',                component: TicketPersonal},
