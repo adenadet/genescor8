@@ -39,6 +39,9 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4 col-sm-12">
+                <div class=""></div>
+            </div>
         </div>
     </div>
 </section>
@@ -64,13 +67,13 @@ export default {
                 this.commentForm.user_id = this.user != null ? this.user.id : '';
                 this.commentForm.post_id = this.post.id;
 
-                toast.fire({icon: 'success',title: 'Appointment loaded successfully',});
+                toast.fire({icon: 'success',title: 'Blog Post loaded successfully',});
             })
             .catch(()=>{
                 this.$Progress.fail();
                 toast.fire({
                     icon: 'error',
-                    title: 'Appointment not loaded successfully',
+                    title: 'Blog Post not loaded successfully',
                 })
             });
         },

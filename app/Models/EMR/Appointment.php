@@ -25,7 +25,7 @@ class Appointment extends Structure
         return $this->belongsTo('App\Models\User', 'radiologist_id', 'id');
     }
     
-    public function medical_officer(){
+    public function doctor(){
         return $this->belongsTo('App\Models\User', 'doctor_id', 'id');
     }
     
@@ -37,6 +37,10 @@ class Appointment extends Structure
     	return $this->belongsTo('App\Models\User', 'created_by', 'id');
 	}
 
+    public function mo(){
+        return $this->belongsTo('App\Models\EMR\Doctor', 'doctor_id', 'id');
+    }
+    
     public function deleter(){
         return $this->belongsTo('App\Models\User', 'deleted_by', 'id');
     }

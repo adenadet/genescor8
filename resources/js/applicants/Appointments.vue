@@ -22,7 +22,7 @@
                     <div class="card-header">
                         <h3 class="card-title">All Appointments</h3>
                         <div class="card-tools">
-                            <button class="btn btn-sm btn-primary" @click="newAppointment"><i class="fa fa-calendar-plus"></i> Book
+                            <button class="btn btn-sm btn-danger" @click="newAppointment"><i class="fa fa-calendar-plus"></i> Book
                                 Appointment</button>
                         </div>
                     </div>
@@ -31,9 +31,10 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Service</th>
-                                    <th>Date</th>
-                                    <th>Time</th>
+                                    <th>Practitioner</th>
+                                    <th>Date &amp; Time</th>
+                                    <th>Duration</th>
+                                    <th>Appointment Type</th>
                                     <th>Complaint</th>
                                     <th>Status</th>
                                     <th></th>
@@ -45,12 +46,20 @@
                                 </tr>
                             </tbody>
                             <tbody v-else>
-                                <tr v-for="(appointment, index) in appointments.data" :key="appointment.id">
-                                    <td>{{index | addOne}}</td>
+                                <tr v-for="(appointment, index) in appointments.data" :key="appointment.id" >
+                                    <td>{{index | addOne }}</td>
+                                    <td v-if="appointment.doctor_id == null">No Doctor yet</td>
+                                    <td v-else>
+                                        <div class="user-block">
+                                            <img class="img-circle" :src="'/img/profile/'+appointment.doctor.image" :alt="appointment.doctor.first_name+' '+appointment.doctor.last_name">
+                                            <span class="username"><a href="#">{{appointment.doctor.first_name+' '+appointment.doctor.last_name}}</a></span>
+                                            <span class="description">{{appointment.mo.speciality != null ? appointment.mo.speciality.name: 'No Specific Speciality'}}</span>
+                                        </div>
+                                    </td>
+                                    
+                                    <td>{{appointment.preferred_date | excelDate}} | <br /><span>{{appointment.schedule}}</span></td>
+                                    <td></td>
                                     <td>{{appointment.service_id != null && appointment.service != null ? appointment.service.name : ''}}</td>
-                                    <td>{{appointment.preferred_date | excelDate}}</td>
-                                    <td>{{appointment.schedule}}</td>
-                                    <td>{{appointment.complaint}}</td>
                                     <td><span class="tag tag-success">{{appointment.status == 0 ? 'Unpaid' :(appointment.status == 1 ? 'Paid' :(appointment.status == 2 ? 'Reschedule' :(appointment.status == 3 ? 'Cancelled' : (appointment.status == 8 ? 'Certificate Sent' :'Done'))))}}</span></td>
                                     <td>
                                         <div class="btn btn-group">
@@ -68,7 +77,7 @@
         </div>
     </div>
 </section>
-</template>
+</template>``
 <script>
 export default {
     data() {

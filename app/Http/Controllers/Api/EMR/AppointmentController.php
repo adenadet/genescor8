@@ -28,7 +28,7 @@ class AppointmentController extends Controller
     {
         return response()->json([
             'applicants'    => User::whereIn('user_type', ['Patient', 'Both'])->orderBy('first_name', 'ASC')->with(['area', 'state',])->get(),
-            'appointments'  => Appointment::where('user_id', auth('api')->id())->with( 'patient', 'medical_officer')->orderBy('preferred_date', 'ASC')->paginate(10),
+            'appointments'  => Appointment::where('user_id', auth('api')->id())->with( 'patient', 'doctor', 'mo')->orderBy('preferred_date', 'ASC')->paginate(10),
             'areas'         => Area::select('id', 'name')->where('state_id', 25)->orderBy('name', 'ASC')->get(),
             'states'        => State::orderBy('name', 'ASC')->get(), 
             //'nations' => Country::orderBy('name', 'ASC')->get(),         
