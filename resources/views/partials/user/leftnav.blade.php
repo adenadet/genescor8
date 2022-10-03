@@ -30,7 +30,7 @@
                     </router-link >
                 </li>
                 <li class="nav-item">
-                    <router-link to="/app/blogs" class="nav-link">
+                    <router-link to="/app/stories" class="nav-link">
                         <i class="nav-icon fas fas fa-comment-alt"></i>
                         <p>Stories</p>
                     </router-link >

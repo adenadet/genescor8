@@ -5,29 +5,46 @@ namespace App\Http\Controllers\Api\Blogs;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Activity;
 use App\Models\Blog\Post;
-//use App\Models\Blog\PostTag;
 use App\Models\Blog\Comment;
+use App\Models\Blog\Category as BlogCategory;
 
 class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api')->except(['index', 'show']);
+        $this->middleware('auth:api')->except(['initials', 'index', 'show', ]);
     }
 
+    
     public function index()
     {
         return response()->json([
-            'blogs' => Post::with(['likes', 'author', 'category', 'approved'])->withCount('comments', 'likes')
-            ->latest()->paginate(12),
+            'blogs' => Post::with(['likes', 'author', 'category', 'approved'])->withCount('comments', 'likes')->latest()->paginate(12),
+        ], 200);
+    }
+
+    public function initials()
+    {
+        return response()->json([
+            'blog_categories' => BlogCategory::orderBy('name', 'ASC')->get(),
+            'recent_stories' => Post::with(['likes', 'author', 'category', 'approved'])->withCount('comments', 'likes')->latest()->limit(4)->get(),
+        ], 200);
+    }
+
+    public function mine()
+    {
+        return response()->json([
+            'blogs' => Post::where('user_id', '=', auth('api')->id())->with(['likes', 'author', 'category', 'approved'])->withCount('comments', 'likes')->latest()->paginate(12),
+            'blog_categories' => BlogCategory::orderBy('name', 'ASC')->get(),
         ], 200);
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            //'topic' => 'required|string|max:200',
+            'topic' => 'required|string|max:200',
             'category_id' => 'required|integer',
             'content'   => 'required|string',
         ]);
@@ -45,16 +62,9 @@ class PostController extends Controller
             'category_id' => $request->input('category_id'), 
             'status' => 0, 
             'approved_by' => null, 
+            'approval_date' => null,
             'published_date' => null, 
         ]);
-        
-        /*foreach ($request->input('tags') as $tag){
-            PostTag::create([
-                'post_id' => $post->id, 
-                'tag_id'  => $tag,
-                'course_id' => $request->input('course_id'), 'status'=> 1,'assigned_date' => date('Y-m-d'), 'start_date' => $request->input('end_date'),  'expiry_date' => $request->input('end_date'), ]
-            );
-        }*/
 
         return response()->json([
             'blogs' => Post::with(['author', 'category', 'approved'])->withCount('comments', 'likes')->latest()->paginate(5),
@@ -69,9 +79,10 @@ class PostController extends Controller
         $user = auth('api')->user() ?? null;
         
         return response()->json([
+            'activities' => Activity::where('activity_type', 'Blog')->where('ref_id', $id)->with(['author'])->latest()->paginate(5),
             'blog' => Post::where('id', '=', $id)->with(['author', 'category', 'approved'])->withCount('comments', 'likes')
             ->first(),
-            'comments' => Comment::where('post_id', '=', $id)->with('author')->paginate(5),
+            'comments' => Comment::where('post_id', '=', $id)->with('author')->latest()->paginate(5),
             'user' => $user,
         ]);
     }

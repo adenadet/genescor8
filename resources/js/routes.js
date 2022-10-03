@@ -1,5 +1,13 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+
+//Home Components
+import HomeWelcome                from './home/Welcome.vue';
+import HomeContact                from './home/Contact.vue';
+
+Vue.component('HomeContact',            HomeContact);
+Vue.component('HomeWelcome',            HomeWelcome);
+
 //Applicant Component
 import ApplicantAppointment       from './applicants/Appointment.vue';
 import ApplicantAppointments      from './applicants/Appointments.vue';
@@ -7,6 +15,8 @@ import ApplicantDashboard         from './applicants/Dashboard.vue';
 import ApplicantPayment           from './applicants/Payment.vue';
 import ApplicantPayments          from './applicants/Payments.vue';
 import ApplicantProfile           from './applicants/Profile.vue';
+import ApplicantStories           from './applicants/Stories.vue';
+import ApplicantStory             from './applicants/Story.vue';
 
     import ApplicantDetailsForm         from './applicants/forms/Details.vue';
     import ApplicantAppointmentForm     from './applicants/forms/Appointment.vue';
@@ -18,6 +28,8 @@ Vue.component('ApplicantDashboard',            ApplicantDashboard);
 Vue.component('ApplicantPayment',              ApplicantPayment);
 Vue.component('ApplicantPayments',             ApplicantPayments);
 Vue.component('ApplicantProfile',              ApplicantProfile);
+Vue.component('ApplicantStories',              ApplicantStories);
+Vue.component('ApplicantStory',                ApplicantStory);
     
     Vue.component('ApplicantDetailsForm',      ApplicantDetailsForm);
     Vue.component('ApplicantAppointmentForm',  ApplicantAppointmentForm);
@@ -25,21 +37,18 @@ Vue.component('ApplicantProfile',              ApplicantProfile);
 
 //Blog Components
 import BlogPosts        from './blog/Posts.vue';
-import BlogPost        from './blog/Post.vue';
+import BlogPost         from './blog/Post.vue';
+import BlogPostDetail   from './blog/PostDetail.vue';
+import BlogSidebar      from './blog/Sidebar.vue';
+
+    import BlogFormPost from './blog/forms/Post.vue';
 
 Vue.component('BlogPost',          BlogPost);
+Vue.component('BlogPostDetail',    BlogPostDetail);
 Vue.component('BlogPosts',         BlogPosts);
+Vue.component('BlogSidebar',       BlogSidebar);
 
-//Chat Components
-import BranchAdmin  from './branches/Admin.vue';
-import BranchAll  from './branches/All.vue';
-import BranchForm  from './branches/Form.vue';
-import BranchSingle  from './branches/Single.vue';
-
-Vue.component('BranchAdmin', BranchAdmin);
-Vue.component('BranchAll', BranchAll);
-Vue.component('BranchForm', BranchForm);
-Vue.component('BranchSingle', BranchSingle);
+    Vue.component('BlogFormPost',       BlogFormPost);
 
 import ChatContacts from './chats/Contacts.vue';
 import ChatList from './chats/List.vue';
@@ -88,16 +97,6 @@ Vue.component('DashboardPrescription',  DashboardPrescription);
 Vue.component('DashboardStaffMonth',    DashboardStaffMonth);
 Vue.component('DashboardSummary',       DashboardSummary);
 Vue.component('DashboardTicket',        DashboardTicket);
-
-import DepartmentAdmin     from './departments/Admin.vue';
-import DepartmentAll       from './departments/All.vue';
-import DepartmentForm      from './departments/Form.vue';
-import DepartmentSingle    from './departments/Single.vue';
-
-Vue.component('DepartmentAdmin',        DepartmentAdmin);
-Vue.component('DepartmentAll',          DepartmentAll);
-Vue.component('DepartmentForm',         DepartmentForm);
-Vue.component('DepartmentSingle',       DepartmentSingle);
 
 import EServiceFrontAppointment      from './eservices/front/Appointment.vue';
 import EServiceFrontAppointments     from './eservices/front/Appointments.vue';
@@ -171,11 +170,22 @@ import PMFormBioData from './profile/forms/BioData.vue';
 import PMFormNOK from './profile/forms/NextOfKin.vue';
 import PMFormPassword from './profile/forms/Password.vue';
 
-
 Vue.component('Profile',        Profile);
 Vue.component('PMFormBioData',  PMFormBioData);
 Vue.component('PMFormNOK',      PMFormNOK);
 Vue.component('PMFormPassword', PMFormPassword);
+
+
+//Profile Components
+
+import StaffDashboard from './staff/Dashboard.vue';
+import StaffUsers from './staff/Users.vue';
+//import PMFormBioData from './profile/forms/BioData.vue';
+//import PMFormNOK from './profile/forms/NextOfKin.vue';
+//import PMFormPassword from './profile/forms/Password.vue';
+
+Vue.component('StaffDashboard',     StaffDashboard)
+Vue.component('StaffUsers',         StaffUsers)
 
 //Ticketing Module Components
 import TicketAdmin      from './ticketing/Admin.vue';
@@ -213,6 +223,8 @@ import UserFormNOK          from './components/users/forms/NextOfKin.vue';
 import UserFormRole         from './components/users/forms/Role.vue';    
 import UserFormUser         from './components/users/forms/BioData.vue'; 
 
+import UserCardHeader       from './users/CardHeader.vue';
+
 Vue.component('AllRoles',           AllRoles);
 Vue.component('AllUsers',           AllUsers);
 Vue.component('UserFormAssignRole', UserFormAssignRole);
@@ -220,17 +232,27 @@ Vue.component('UserFormNOK',        UserFormNOK);
 Vue.component('UserFormRole',       UserFormRole);
 Vue.component('UserFormUser',       UserFormUser);
 
+Vue.component('UserCardHeader', UserCardHeader)
+
 
 let routes = [
+    {path: '/',                      component: HomeWelcome},
+    {path: '/contact',               component: HomeContact},
 //Applicant Module
     {path: '/app',                   component: ApplicantDashboard},
     {path: '/app/appointment/:id',   component: ApplicantAppointment},
     {path: '/app/appointments',      component: ApplicantAppointments},
     {path: '/app/dashboard',         component: ApplicantDashboard},
-    {path: '/app/payments',          component: ApplicantPayments},
+    //{path: '/app/wallets',           component: ApplicantWallet},
     {path: '/app/payment/:id',       component: ApplicantPayment},
+    {path: '/app/stories',           component: ApplicantStories},
+    {path: '/app/stories/:id',       component: ApplicantStory},
     {path: '/app/profile',           component: ApplicantProfile},
 
+//Staff Module
+    {path: '/staff',                 component: StaffDashboard},
+    {path: '/staff/stories',         component: StaffDashboard},
+    {path: '/staff/users',           component: StaffUsers},
 
 //Dashboard Module
     {path: '/home',             component: ApplicantDashboard},
@@ -242,20 +264,12 @@ let routes = [
     {path: '/stories/post/:id',    component: BlogPost},
 
 //Chats Links
-    {path: '/branches',         component: BranchAll},
-    {path: '/branches/:id',     component: BranchSingle},
-
-//Chats Links
     {path: '/chats',            component: ChatMain},
     {path: '/chats/private',    component: ChatMain},
 
 //Contact Links
     {path: '/contacts',           component:ContactAll},
     {path: '/contacts/staff/:id', component:ContactSingle},
-
-//Department Links
-    {path: '/departments',          component:DepartmentAll},
-    {path: '/departments/:id',      component:DepartmentSingle},
 
 //Pharmacy Module
     {path: '/pharmacy',             component: PharmacyMain},

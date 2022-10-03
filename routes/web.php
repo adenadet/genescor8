@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/',             [App\Http\Controllers\BlogController::class, 'welcome'])->name('welcome');
+Route::get('/contact',      [App\Http\Controllers\BlogController::class, 'contact'])->name('contact');
 Route::get('/tests',        [App\Http\Controllers\TestController::class, 'index'])->name('test');
 Route::get('/stories',      [App\Http\Controllers\BlogController::class, 'index'])->name('stories');
 Route::get('/stories/{any}',[App\Http\Controllers\BlogController::class, 'index'])->where('any', '.*');
@@ -12,7 +13,7 @@ Route::get('/consultant',   [App\Http\Controllers\HomeController::class, 'index'
 Route::get('/staffs',       [App\Http\Controllers\StaffController::class, 'index'])->name('staff');
 Route::get('/pharmacy',     [App\Http\Controllers\PharmacyController::class, 'index'])->name('pharmacy');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home',         [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::get('/clear-cache', function() {

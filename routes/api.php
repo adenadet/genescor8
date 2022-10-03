@@ -16,6 +16,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Api', 'middleware'=>['auth:api'
     ]);
 });
 
+Route::post('/contact', 'App\Http\Controllers\Api\ContactController@store');
 Route::get('/access_token', 'App\Http\Controllers\Api\GenerateAccessTokenController@generate_token');
 Route::post('/login', 'App\Http\Controllers\Api\AuthController@login');
 Route::post('/logout', 'App\Http\Controllers\Api\AuthController@logout')->middleware('auth:api');

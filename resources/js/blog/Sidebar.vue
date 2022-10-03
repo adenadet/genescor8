@@ -1,7 +1,8 @@
 <template>
+<section>
 <div class="card card-widget">
     <div class="card-header">
-        <h3>Categories</h3>
+        <h4>Story Categories</h4>
     </div>
     <div class="card-body">
         <!-- Use bootstrap nav items here-->
@@ -10,6 +11,26 @@
         </ul>
     </div>
 </div>
+<div class="card card-widget">
+    <div class="card-header">
+        <h4>Recent Stories</h4>
+    </div>
+    <div class="card-body">
+        <div class="card card-widget" v-for="story in recent_stories">
+            <div class="row">
+                <div class="col-md-5"><img class="card-img-top img-fluid" :src="'/img/gallery/'+(story.image != null ? story.image : '1.jpg')" :alt="story.topic" :title="story.topic"></div>
+                <div class="col-md-7">
+                    <a :href="'/stories/post/'+story.id"><h6 class="text-danger">{{story.topic}}</h6></a> 
+                    <div class="user-block" v-if="(story.author != null && typeof(story.author) != 'undefined')">
+                        <img class="img-sm img-circle img-fluid" :src="'/img/profile/'+(story.author != null ? story.author.image : 'default.png')" alt="User Image">
+                        <span class="username"><a class="text-danger">{{(story.author.first_name+' '+story.author.last_name) | readMore(10, '..')}}</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
 </template>
 <script>
 export default {
@@ -20,6 +41,7 @@ export default {
             }),
             comments: {},
             blog_categories: [],
+            recent_stories: [],
             user: {},
         }
     },
@@ -63,7 +85,7 @@ export default {
         }
     },
     mounted() {
-        //this.getAllInitials();
+        this.getAllInitials();
         Fire.$on('preliminaryAdd', message =>{
             this.messages.push(message);
         }); 

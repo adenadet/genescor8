@@ -77,7 +77,7 @@
         </div>
     </div>
 </section>
-</template>``
+</template>
 <script>
 export default {
     data() {

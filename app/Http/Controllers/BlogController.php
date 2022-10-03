@@ -23,4 +23,13 @@ class BlogController extends Controller
         ];
         return view('stories')->with($params);
     }
+
+    public function contact()
+    {
+        $params = [
+            'title' => 'Contact Us',
+            'page_title' => 'Contact Us',
+        ];
+        return view('stories')->with($params);
+    }
 }

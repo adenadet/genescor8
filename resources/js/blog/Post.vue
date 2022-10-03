@@ -4,20 +4,7 @@
         <div class="row">
             <div class="col-md-8 col-sm-12">
                 <div class="card card-widget">
-                    <div class="card-header">
-                        <div class="user-block" v-if="(post.author != null && typeof(post.author) != 'undefined')">
-                            <img class="img-circle" :src="'/img/profile/'+(post.author != null ? post.author.image : 'default.png')" alt="User Image">
-                            <span class="username"><a class="text-danger">{{post.author.first_name+' '+post.author.last_name}}</a></span>
-                            <span class="description">Shared publicly - 7:30 PM Today</span>
-                        </div>
-                    </div>
-                    <img class="card-img-top" :src="'/img/gallery/'+(post.image != null ? post.image : '1.jpg')" alt="Card image cap"/>
-                    <div class="card-body">
-                        <p>{{post.content}}</p>
-                        <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i> Share</button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="far fa-thumbs-up"></i> Like</button>
-                        <span class="float-right text-muted">{{post.likes_count}} likes - {{post.comments_count}} comments</span>
-                    </div>
+                    <BlogPostDetail :post="post"/>
               
                     <div class="card-footer card-comments" v-if="(comments.data != null && typeof(comments.data) != 'undefined')">
                         <div class="card-comment" v-for="post_comment in comments.data" :key="post_comment.id">
@@ -40,7 +27,7 @@
                 </div>
             </div>
             <div class="col-md-4 col-sm-12">
-                <div class=""></div>
+                <BlogSidebar />
             </div>
         </div>
     </div>

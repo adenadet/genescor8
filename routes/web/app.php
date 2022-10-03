@@ -13,6 +13,7 @@ Route::group(['prefix'=>'app'], function () {
     Route::get('notices',       [App\Http\Controllers\ApplicantController::class, 'notices'])->name('notices');
     Route::get('profile',       [App\Http\Controllers\ApplicantController::class, 'profile'])->name('profile');
     Route::get('settings',      [App\Http\Controllers\ApplicantController::class, 'settings'])->name('settings');
+    Route::get('stories',       [App\Http\Controllers\ApplicantController::class, 'settings'])->name('stories');
     Route::get('ticket',        [App\Http\Controllers\ApplicantController::class, 'ticketing'])->name('ticketing');
     
     //Auto Redirect
@@ -22,7 +23,7 @@ Route::group(['prefix'=>'app'], function () {
     Route::get('internet/{any}',           [App\Http\Controllers\ApplicantController::class, 'internet'])->where('any', '.*');
     //Route::get('notices/{any}',            [App\Http\Controllers\ApplicantController::class, 'notices'])->where('any', '.*');
     //Route::get('policies/{any}',           [App\Http\Controllers\ApplicantController::class, 'policies'])->where('any', '.*');
-    //Route::get('settings/{any}',           [App\Http\Controllers\ApplicantController::class, 'settings'])->where('any', '.*');
+    Route::get('stories/{any}',            [App\Http\Controllers\ApplicantController::class, 'settings'])->where('any', '.*');
 
     Route::get('ticketing/{any}',          [App\Http\Controllers\ApplicantController::class, 'ticketing'])->where('any', '.*');
 });

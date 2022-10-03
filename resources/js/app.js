@@ -95,6 +95,7 @@ Vue.component('multiselect', Multiselect)
 //Import WYSIWYG
 import wysiwyg from "vue-wysiwyg";
 Vue.use(wysiwyg, {});
+import "vue-wysiwyg/dist/vueWysiwyg.css";
 
 //Import Youtube Player
 import VueYoutube from 'vue-youtube'
@@ -145,7 +146,11 @@ Vue.filter('readMore', function (text, length, suffix) {
     if (text == null){return text;}
     else if (text.length <= length){return text;}
     else{return text.substring(0, length) + suffix;}
-});        
+});     
+
+Vue.filter('recentDate', function(text){
+    return moment(text).format('MMMM Do, YYYY');
+    });
 
 Vue.filter('shortDate', function(text){
     return moment(text).format('MMM Do, YY');    });
