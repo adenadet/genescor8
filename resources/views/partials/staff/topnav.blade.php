@@ -4,21 +4,21 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block bg-grey">
-            <a href="/applicants" class="nav-link">Home</a>
+            <a href="{{route('app')}}" class="nav-link">Home</a>
         </li>
         @if(Auth::user()->hasRole('Doctor') || Auth::user()->hasRole('Super Admin'))
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/consultant" class="nav-link">Consultant Area</a>
+            <a href="{{route('consultant')}}" class="nav-link">Consultant Area</a>
         </li> 
         @endif
         @if(Auth::user()->hasRole('Agency') || Auth::user()->hasRole('Super Admin'))
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/agency" class="nav-link">Agency Area</a>
+            <a href="{{route('agency')}}" class="nav-link">Agency Area</a>
         </li> 
         @endif
         @if(Auth::user()->hasRole('Staff') || Auth::user()->hasRole('Super Admin'))
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/staff" class="nav-link">Staff Area</a>
+            <a href="{{route('staff')}}" class="nav-link">Staff Area</a>
         </li> 
         @endif
     </ul>

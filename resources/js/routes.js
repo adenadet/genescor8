@@ -35,14 +35,26 @@ Vue.component('ApplicantStory',                ApplicantStory);
     Vue.component('ApplicantAppointmentForm',  ApplicantAppointmentForm);
     Vue.component('ApplicantPaymentForm',      ApplicantPaymentForm);
 
+//Applicant Component
+import ApprovalAgencies         from './approvals/Agencies.vue';
+import ApprovalDoctors          from './approvals/Doctors.vue';
+import ApprovalHospitals        from './approvals/Hospitals.vue';
+import ApprovalStories          from './approvals/Stories.vue';
+
+Vue.component('ApprovalAgencies',      ApprovalAgencies);
+Vue.component('ApprovalDoctors',      ApprovalDoctors);
+Vue.component('ApprovalHospitals',      ApprovalHospitals);
+Vue.component('ApprovalStories',      ApprovalStories);
+
 //Blog Components
+import BlogHomePage     from './blog/HomePage.vue';
 import BlogPosts        from './blog/Posts.vue';
 import BlogPost         from './blog/Post.vue';
 import BlogPostDetail   from './blog/PostDetail.vue';
 import BlogSidebar      from './blog/Sidebar.vue';
-
     import BlogFormPost from './blog/forms/Post.vue';
-
+    
+Vue.component('BlogHomePage',      BlogHomePage);
 Vue.component('BlogPost',          BlogPost);
 Vue.component('BlogPostDetail',    BlogPostDetail);
 Vue.component('BlogPosts',         BlogPosts);
@@ -178,14 +190,19 @@ Vue.component('PMFormPassword', PMFormPassword);
 
 //Profile Components
 
-import StaffDashboard from './staff/Dashboard.vue';
-import StaffUsers from './staff/Users.vue';
-//import PMFormBioData from './profile/forms/BioData.vue';
-//import PMFormNOK from './profile/forms/NextOfKin.vue';
-//import PMFormPassword from './profile/forms/Password.vue';
+import StaffDashboard       from './staff/Dashboard.vue';
+import StaffPendAgencies    from './staff/PendAgencies.vue';
+import StaffPendProviders   from './staff/PendProviders.vue';
+import StaffPendStories     from './staff/PendStories.vue';
+import StaffUsers           from './staff/Users.vue';
+import StaffUserNew         from './staff/UserNew.vue';
 
-Vue.component('StaffDashboard',     StaffDashboard)
-Vue.component('StaffUsers',         StaffUsers)
+Vue.component('StaffDashboard',     StaffDashboard);
+Vue.component('StaffPendAgencies',  StaffPendAgencies);
+Vue.component('StaffPendProviders', StaffPendProviders);
+Vue.component('StaffPendStories',   StaffPendAgencies);
+Vue.component('StaffUsers',         StaffUsers);
+Vue.component('StaffUserNew',       StaffUserNew);
 
 //Ticketing Module Components
 import TicketAdmin      from './ticketing/Admin.vue';
@@ -215,13 +232,13 @@ Vue.component('TicketSingle',           TicketSingle);
     Vue.component('TicketFormReply',    TicketFormReply);
 
 //User Modules Components
-import AllRoles from './components/users/AllRoles.vue';    
-import AllUsers from './components/users/AllUsers.vue';    
+import AllRoles from './users/AllRoles.vue';    
+import AllUsers from './users/AllUsers.vue';    
 
-import UserFormAssignRole   from './components/users/forms/AssignRole.vue';    
-import UserFormNOK          from './components/users/forms/NextOfKin.vue'; 
-import UserFormRole         from './components/users/forms/Role.vue';    
-import UserFormUser         from './components/users/forms/BioData.vue'; 
+import UserFormAssignRole   from './users/forms/AssignRole.vue';    
+import UserFormNOK          from './users/forms/NextOfKin.vue'; 
+import UserFormRole         from './users/forms/Role.vue';    
+import UserFormUser         from './users/forms/BioData.vue'; 
 
 import UserCardHeader       from './users/CardHeader.vue';
 
@@ -250,10 +267,16 @@ let routes = [
     {path: '/app/profile',           component: ApplicantProfile},
 
 //Staff Module
-    {path: '/staff',                 component: StaffDashboard},
-    {path: '/staff/stories',         component: StaffDashboard},
-    {path: '/staff/users',           component: StaffUsers},
-
+    {path: '/staffs',                 component: StaffDashboard},
+    {path: '/staffs/dashboard',       component: StaffDashboard},
+    {path: '/staffs/stories',         component: StaffDashboard},
+    {path: '/staffs/users',           component: StaffUsers},
+    {path: '/staffs/users/new',       component: StaffUserNew},
+    {path: '/staffs/users/roles',     component: AllRoles},
+    {path: '/staffs/pend/agencies',   component: StaffPendAgencies},
+    {path: '/staffs/pend/providers',  component: StaffPendProviders},
+    {path: '/staffs/pend/stories',    component: StaffPendStories},
+    
 //Dashboard Module
     {path: '/home',             component: ApplicantDashboard},
     {path: '/dashboard',        component: DashboardMain},

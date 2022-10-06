@@ -53018,3 +53018,50 @@ font-size: 16px !important;
 line-height: 19px !important;
 color: #2B2A29  !important;
 }
+
+.features h3{
+  text-align: center; 
+  vertical-align: center; 
+  background: rgba(209, 43, 47, 0.03); 
+  width: 90px; 
+  height:90px; 
+  font-size: 30px; 
+  color: #D12B2F; 
+  border-radius: 50%
+}
+
+.features h2{
+  margin-top: 10px;
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 65px;
+  color: #2B2A29;
+}
+
+
+.features h3 sup{
+  font-size: 18px; 
+  vertical-align: top; 
+  margin-left: -10px;
+}
+
+.features h5{
+  font-family: 'Work Sans'; 
+  font-style: normal; 
+  font-weight: 600; 
+  font-size: 20px; 
+  line-height: 28px; 
+  text-align: left; 
+  color: #2B2A29;
+}
+
+.features p{
+  font-family: 'Work Sans'; 
+  font-style: normal; 
+  font-weight: 400; 
+  font-size: 16px; 
+  line-height: 27px; 
+  color: #2B2A29;
+}

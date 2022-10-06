@@ -35,7 +35,6 @@
                                     <th>Date &amp; Time</th>
                                     <th>Duration</th>
                                     <th>Appointment Type</th>
-                                    <th>Complaint</th>
                                     <th>Status</th>
                                     <th></th>
                                 </tr>
@@ -63,9 +62,10 @@
                                     <td><span class="tag tag-success">{{appointment.status == 0 ? 'Unpaid' :(appointment.status == 1 ? 'Paid' :(appointment.status == 2 ? 'Reschedule' :(appointment.status == 3 ? 'Cancelled' : (appointment.status == 8 ? 'Certificate Sent' :'Done'))))}}</span></td>
                                     <td>
                                         <div class="btn btn-group">
-                                            <router-link :to="'/applicants/appointment/'+appointment.id"><button class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></button></router-link>
-                                            <button class="btn btn-success btn-sm"><i class="fa fa-file-pdf"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                            <router-link :to="'/applicants/appointment/'+appointment.id" title="View Appointment"><button class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></button></router-link>
+                                            <button class="btn btn-success btn-sm" title="Add Extra Files"><i class="fa fa-file-pdf"></i></button>
+                                            <button class="btn btn-default btn-sm" title="Reschedule Appointment"><i class="fa fa-calendar"></i></button>
+                                            <button class="btn btn-danger btn-sm" title="Cancel Appointment"><i class="fa fa-trash"></i></button>
                                         </div> 
                                     </td>
                                 </tr>

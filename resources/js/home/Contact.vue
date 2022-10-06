@@ -114,13 +114,10 @@ export default {
                     footer: 'Please try again later!'
                     });
                 this.$Progress.fail();
-                });  
-                    
-        },
-        
+            });  
+        },   
     },
-    mounted() {
-    },
+    mounted() {},
     props:{},
 }
 </script>

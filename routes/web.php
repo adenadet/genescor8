@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/',             [App\Http\Controllers\BlogController::class, 'welcome'])->name('welcome');
+Route::get('/app',          [App\Http\Controllers\ApplicantController::class, 'chats'])->name('app');
 Route::get('/contact',      [App\Http\Controllers\BlogController::class, 'contact'])->name('contact');
 Route::get('/tests',        [App\Http\Controllers\TestController::class, 'index'])->name('test');
 Route::get('/stories',      [App\Http\Controllers\BlogController::class, 'index'])->name('stories');
@@ -25,25 +26,7 @@ Route::get('/clear-cache', function() {
     // return what you want
 });
 
-//Route::get('/agency', [App\Http\Controllers\AgencyController::class, 'index'])->name('agency');
-
 Route::namespace('App\Http\Controllers')->middleware(['auth', 'role:Agency'])->name('agency.')->group(base_path('routes/web/agency.php'));
 Route::namespace('App\Http\Controllers')->middleware(['auth',])->name('app.')->group(base_path('routes/web/app.php'));
 Route::namespace('App\Http\Controllers')->middleware(['auth', 'role:Consultant'])->name('consultant.')->group(base_path('routes/web/consultant.php'));
 Route::namespace('App\Http\Controllers')->middleware(['auth', 'role:Staff'])->name('staffs.')->group(base_path('routes/web/staff.php'));
-/*
-Route::group(['middleware' => ['auth'],'namespace' => 'App\Http\Controllers', 'name' => 'app', 'prefix' => '/app'], function () {
-    Route::get('/',             'ApplicantController@index');
-    Route::get('/{any}',        'ApplicantController@index')->where('any', '.*');
-});
-
-Route::group(['middleware' => ['auth', 'role:Consultant'],'namespace' => 'App\Http\Controllers', 'name' => 'consultants', 'prefix' => '/consultants'], function () {
-    Route::get('/',             'ConsultantController@index');
-    Route::get('/{any}',        'ConsultantController@index')->where('any', '.*');
-});
-
-Route::group(['middleware' => ['auth', 'role:Staff'],'namespace' => 'App\Http\Controllers', 'prefix' => '/staffs'], function () {
-    Route::get('/',             'StaffController@index');
-    
-});
-*/

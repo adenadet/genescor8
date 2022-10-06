@@ -1,17 +1,15 @@
 <template>
     <div class="card">
         <div class="card-header"><h3 class="card-title">Recent Activities</h3></div>
-        <div class="card-body table-responsive p-0" v-if="(activities != null && activites.length != 0)">
+        <div class="card-body table-responsive p-0" v-if="(activities != null && activities.length != 0)">
             <table class="table table-striped table-valign-middle">
-                <tbody>
+                <tbody v-if="(activities != null && typeof(activities) != 'undefined')">
                     <tr v-for="activity in activities" :key="activity.id">
                         <td>
-                            <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                            Some Product
+                            <UserCardHeader :user="activity.author" :activity="activity"/>
                         </td>
-                        <td>$13 USD</td>
-                        <td><small class="text-success mr-1"><i class="fas fa-arrow-up"></i>12%</small>12,000 Sold</td>
-                        <td><a href="#" class="text-muted"><i class="fas fa-search"></i></a></td>
+                        <td v-html="activity.content"></td>
+                        <td><a href="#" class="text-muted"><i class="fas fa-eye"></i></a></td>
                     </tr>
                 </tbody>
             </table>
@@ -31,7 +29,7 @@
             
         },
         props:{
-            'activities': Array,
+            activities: Array,
         },
     }
     </script>

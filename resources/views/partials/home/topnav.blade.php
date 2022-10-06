@@ -11,39 +11,62 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 @endauth
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        Services <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item"><i class="fas fa-envelope mr-2"></i> Consultations</a>
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <a href="#" class="dropdown-item"><i class="fa fa-pills mr-2"></i> Prescriptions</a>
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <a href="#" class="dropdown-item"><i class="fas fa-file mr-2"></i> Lab Tests</a>
+                        <!--<div class="dropdown-divider"></div> -->
+                        <a href="#" class="dropdown-item"><i class="fas fa-file mr-2"></i> Health Management</a>
+                    </div>
+                </li>
                 <li class="nav-item">
-                    <a href="/" class="nav-link">Home</a>
+                    <a href="/pharmacy" class="nav-link">E-Pharmacy</a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        Providers <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item"><i class="fas fa-user-md mr-2"></i> Doctors</a>
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <a href="#" class="dropdown-item"><i class="fa fa-pills mr-2"></i> Hospitals/Clinics</a>
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <a href="#" class="dropdown-item"><i class="fas fa-file mr-2"></i> Diagnostics</a>
+                        <!--<div class="dropdown-divider"></div> -->
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Alternate Dropdown Design</a>
+                    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                        <li><a href="#" class="dropdown-item">Some action </a></li>
+                        <li><a href="#" class="dropdown-item">Some other action</a></li>
+                    </ul>
+                  </li>
+                <li class="nav-item">
+                    <a href="/stories" class="nav-link">SCW Community</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/contact" class="nav-link">About Us</a>
                 </li>
                 @auth
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="/app" class="nav-link">App Area</a>
                 </li> 
                 @endauth
-                <li class="nav-item">
-                    <a href="/stories" class="nav-link">Stories</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/pharmacy" class="nav-link">Pharmacy</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/contact" class="nav-link">Contact</a>
-                </li>
             </ul>
-            <form class="form-inline ml-0 ml-md-3">
-              <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                  <button class="btn btn-navbar" type="submit">
-                    <i class="fas fa-search"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
         </div>
-
-      <!-- Right navbar links -->
         <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-          <!-- Messages Dropdown Menu -->
+      <!-- Right navbar links
+        <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
           <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
               <i class="fas fa-comments"></i>
@@ -51,7 +74,6 @@
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
               <a href="#" class="dropdown-item">
-                <!-- Message Start -->
                 <div class="media">
                   <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                   <div class="media-body">
@@ -63,11 +85,9 @@
                     <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
                   </div>
                 </div>
-                <!-- Message End -->
               </a>
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item">
-                <!-- Message Start -->
                 <div class="media">
                   <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                   <div class="media-body">
@@ -79,11 +99,9 @@
                     <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
                   </div>
                 </div>
-                <!-- Message End -->
               </a>
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item">
-                <!-- Message Start -->
                 <div class="media">
                   <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                   <div class="media-body">
@@ -95,13 +113,11 @@
                     <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
                   </div>
                 </div>
-                <!-- Message End -->
               </a>
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
             </div>
           </li>
-          <!-- Notifications Dropdown Menu -->
           <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
               <i class="far fa-bell"></i>
@@ -127,9 +143,9 @@
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
-          </li>
-          <li class="nav-item dropdown">
+          </li> -->
           @auth
+          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->first_name }}</a>
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">       
                   <a href="{{ url('/home') }}" class="dropdown-item">Home</a>     
@@ -139,17 +155,19 @@
                       @csrf
                   </form>
               </div>
-          @else
+          </li>
+          <li>
               <a class="nav-link" data-toggle="dropdown" href="#"><i class="fas fa-user"></i></a>
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                   <a href="{{ route('login') }}" class="dropdown-item"><i class="fa fa-key mr-1"></i>Log in</a>
                   <div class="dropdown-divider"></div>
                   <a href="{{ route('register') }}" class="dropdown-item"><i class="fa fa-user-plus mr-1"></i>Register</a>
               </div>
-          @endauth
           </li>
-          
           <li class="nav-item"><a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i class="fas fa-shopping-cart"></i></a></li>
+          @else
+          <li class="nav-item"><a class="nav-link btn btn-danger" style="color:#FFF;">Register</a></li>
+          @endauth
         </ul>
     </div>
 </nav>

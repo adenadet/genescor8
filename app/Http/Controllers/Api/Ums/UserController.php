@@ -23,31 +23,26 @@ class UserController extends Controller
 {
     public function initials()
     {
-        $users = User::where('branch_id', auth('api')->user()->branch_id)->paginate(52);
+        $users = User::orderBy('first_name', 'ASC')->paginate(52);
         return response()->json(['users' => $users]);
     }
       
     public function index()
     {
-        $areas = Area::select('id', 'name')->where('state_id', 25)->orderBy('name', 'ASC')->get();
-        $branches = Branch::select('id', 'name')->orderBy('name', 'ASC')->get();
-        $departments = Department::select('id', 'name')->orderBy('name', 'ASC')->get();
-        $nok = NextOfKin::where('user_id', auth('api')->id())->get();
+        $areas  = Area::select('id', 'name')->where('state_id', 25)->orderBy('name', 'ASC')->get();
+        $nok    = NextOfKin::where('user_id', auth('api')->id())->get();
         $states = State::orderBy('name', 'ASC')->get();
-        $users = User::orderBy('first_name', 'ASC')->with('area')->with('state')->with('branch')->with('department')->with('roles')->paginate(51);
+        $users  = User::orderBy('first_name', 'ASC')->with(['area','state'])->with('roles')->paginate(51);
         
         return response()->json([
-            'areas' => $areas,
-            'branches' => $branches,
-            'departments' => $departments,
-            'nok' => $nok,
-            'states' => $states,       
-            'users' => $users,
+            'areas'     => $areas,
+            'nok'       => $nok,
+            'states'    => $states,       
+            'users'     => $users,
         ]);
     }
 
-    public function roles(Request $request)
-    {
+    public function roles(Request $request){
         $this->validate($request, [
             'user_id' => 'required|numeric',
             'roles' => 'required|array',
@@ -63,16 +58,11 @@ class UserController extends Controller
         $user->syncRoles($role_names);
         
         $areas = Area::select('id', 'name')->where('state_id', 25)->orderBy('name', 'ASC')->get();
-        $branches = Branch::select('id', 'name')->orderBy('name', 'ASC')->get();
-        $departments = Department::select('id', 'name')->orderBy('name', 'ASC')->get();
-        $nok = NextOfKin::where('user_id', auth('api')->id())->get();
         $states = State::orderBy('name', 'ASC')->get();
         $users = User::orderBy('first_name', 'ASC')->with('area')->with('state')->with('branch')->with('roles')->paginate(51);
 
         return response()->json([
             'areas' => $areas,
-            'branches' => $branches,
-            'departments' => $departments,
             'nok' => $nok,
             'states' => $states,       
             'users' => $users,
@@ -117,8 +107,6 @@ class UserController extends Controller
             'personal_email' => $request['personal_email'],
             'phone' => $request['phone'],
             'alt_phone' => $request['alt_phone'],
-            'branch_id' => $request['branch_id'],
-            'department_id' => $request['department_id'],
             'sex' => $request['sex'],
             'dob' => $request['dob'],
             'image' => $image_url,
@@ -148,7 +136,7 @@ class UserController extends Controller
     public function search()
     {
         if ($search = \Request::get('q')){
-            $users = User::orderBy('first_name', 'ASC')->with('area')->with('state')->with('branch')->with('department')->where(function($query) use ($search){
+            $users = User::orderBy('first_name', 'ASC')->with(['area','state'])->where(function($query) use ($search){
                 $query->where('first_name', 'LIKE', "%$search%")
                 ->orWhere('middle_name', 'LIKE', "%$search%")
                 ->orWhere('last_name', 'LIKE', "%$search%")
@@ -156,7 +144,7 @@ class UserController extends Controller
                 })->paginate(52);
             }
         else{
-            $users = User::orderBy('first_name', 'ASC')->with('area')->with('state')->with('branch')->with('department')->paginate(52);
+            $users = User::orderBy('first_name', 'ASC')->with(['area', 'state'])->paginate(52);
         }
         
         return response()->json(['users' => $users,]);
@@ -208,7 +196,18 @@ class UserController extends Controller
     
     public function show($id)
     {
-        
+        $areas  = Area::select('id', 'name')->where('state_id', 25)->orderBy('name', 'ASC')->get();
+        $states = State::orderBy('name', 'ASC')->get();
+        $users = [];
+        if (is_string($id)){
+            $users = User::whereDate('created_at', '>=', date('Y-m-d H:i:s',strtotime('-14 days')))->latest()->with(['area','state','roles'])->paginate(51);
+        }
+
+        return response()->json([
+            'areas'     => $areas,
+            'states'    => $states,       
+            'users'     => $users,
+        ]);
     }
 
 

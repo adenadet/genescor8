@@ -21,11 +21,11 @@
                     <div class="row mb-2">
                         <div class="col-md-6 col-sm-12"><DashboardAppointment :appointment="appointment" /></div>
                         <div class="col-md-6 col-sm-12"><DashboardPrescription :prescription="prescription" /></div>
-                        <div class="col-12"><DashboardActivities :activities="activitttties"></DashboardActivities></div>
+                        <div class="col-12"><DashboardActivities :activities="activities" /></div>
                     </div>
                 </section>
                 <section class="col-lg-4 connectedSortable">
-                    <DashboardChat :birthdays="birthdays" />
+                    <DashboardChat />
                 </section>
             </div>
         </div>
@@ -36,6 +36,7 @@ import moment from 'moment'
 export default {
     data() {
         return {
+            activities: [],
             appointment: {},
             birthdays: [],
             contacts: [],
@@ -60,6 +61,7 @@ export default {
         getAllInitials() {
             axios.get('/api/dashboard')
                 .then(response => {
+                    this.activities = response.data.activities;
                     this.birthdays = response.data.birthdays;
                     this.contacts = response.data.contacts;
                     this.chats = response.data.chats;

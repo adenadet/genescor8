@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix'=>'app'], function () {
 
-    Route::get('/',             [App\Http\Controllers\ApplicantController::class, 'chats'])->name('chats');
     Route::get('appointments',  [App\Http\Controllers\ApplicantController::class, 'appointments'])->name('appointments');
     Route::get('chats',         [App\Http\Controllers\ApplicantController::class, 'chats'])->name('chats');
     Route::get('contacts',      [App\Http\Controllers\ApplicantController::class, 'contacts'])->name('contacts');

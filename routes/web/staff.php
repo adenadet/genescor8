@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix'=>'staff'], function () {
+Route::group(['prefix'=>'staffs'], function () {
 
     Route::get('chats',         [App\Http\Controllers\StaffController::class, 'chats'])->name('chats');
     Route::get('contacts',      [App\Http\Controllers\StaffController::class, 'contacts'])->name('contacts');

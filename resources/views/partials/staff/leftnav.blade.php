@@ -15,23 +15,21 @@
         </div>
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item">
-                    <router-link to="/staff/dashboard" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>Dashboard</p>
-                    </router-link >
+                <li class="nav-item"><router-link to="/staffs/dashboard" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard</p></router-link></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-users"></i><p>Users<i class="right fas fa-angle-left"></i></p></a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><router-link to="/staffs/users" class="nav-link"><i class="fa fa-list nav-icon"></i><p>All</p></router-link></li>
+                        <li class="nav-item"><router-link to="/staffs/users/new" class="nav-link"><i class="fa fa-user-plus nav-icon"></i><p>New Registrations</p></router-link></li>
+                        <li class="nav-item"><router-link to="/staffs/users/roles" class="nav-link"><i class="fa fa-user-cog nav-icon"></i><p>Roles</p></router-link></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
-                    <router-link to="/staff/users" class="nav-link">
-                        <i class="nav-icon fas fas fa-users"></i>
-                        <p>Users</p>
-                    </router-link >
-                </li>
-                <li class="nav-item">
-                    <router-link to="/staff/stories" class="nav-link">
-                        <i class="nav-icon fas fas fa-user"></i>
-                        <p>Stories</p>
-                    </router-link >
+                    <a href="#" class="nav-link"><i class="nav-icon fas fa-check"></i><p>Approvals<i class="right fas fa-angle-left"></i></p></a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"><router-link to="/staffs/pend/providers" class="nav-link"><i class="fa fa-user-md nav-icon"></i><p>Providers</p></router-link></li>
+                        <li class="nav-item"><router-link to="/staffs/pend/agencies" class="nav-link"><i class="fa fa-building nav-icon"></i><p>Agencies</p></router-link></li>
+                        <li class="nav-item"><router-link to="/staffs/pend/stories" class="nav-link"><i class="fa fa-comment-alt nav-icon"></i><p>Stories</p></router-link></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <router-link to="/staff/doctors" class="nav-link">
@@ -40,7 +38,7 @@
                     </router-link >
                 </li>
                 <li class="nav-item">
-                    <router-link to="/staff/agencies" class="nav-link">
+                    <router-link to="/staff/payments" class="nav-link">
                         <i class="nav-icon fas fa-wallet"></i>
                         <p>Payments</p>
                     </router-link >

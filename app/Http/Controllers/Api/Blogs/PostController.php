@@ -28,6 +28,7 @@ class PostController extends Controller
     public function initials()
     {
         return response()->json([
+            'blogs' => Post::with(['likes', 'author', 'category', 'approved'])->withCount('comments', 'likes')->latest()->paginate(3),
             'blog_categories' => BlogCategory::orderBy('name', 'ASC')->get(),
             'recent_stories' => Post::with(['likes', 'author', 'category', 'approved'])->withCount('comments', 'likes')->latest()->limit(4)->get(),
         ], 200);

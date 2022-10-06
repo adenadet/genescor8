@@ -11,11 +11,11 @@ Route::namespace('App\Http\Controllers\Api\Ticketing')->middleware('auth:api')->
 Route::namespace('App\Http\Controllers\Api\Ums')->middleware('auth:api')->name('api.ums.')->group(base_path('routes/api/ums.php'));
 
 Route::group(['namespace'=>'App\Http\Controllers\Api', 'middleware'=>['auth:api'], 'name'=>'api.'], function () {
+    Route::get('/dashboard/staff', 'DashboardController@staff')->name('api.dashboard.staff')->middleware('role:Staff');
     Route::apiResources([
         '/dashboard'     => 'DashboardController',
     ]);
 });
-
 Route::post('/contact', 'App\Http\Controllers\Api\ContactController@store');
 Route::get('/access_token', 'App\Http\Controllers\Api\GenerateAccessTokenController@generate_token');
 Route::post('/login', 'App\Http\Controllers\Api\AuthController@login');

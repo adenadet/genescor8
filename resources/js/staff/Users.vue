@@ -1,8 +1,7 @@
 <template>
 <section>
     <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="row clearfix">
                 <div class="modal fade" id="userModal">
                     <div class="modal-dialog modal-lg">
@@ -56,7 +55,7 @@
                                                 <div class="col-12">
                                                     <ul class="ml-4 mb-0 fa-ul text-muted">
                                                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> Email: {{user.email}}</li>
-                                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Dept: {{((typeof user.department != 'undefined') && (user.department !== null))? user.department.name: ''}}</li>
+                                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Roles: {{(user.roles != null && (typeof (user.roles) != 'undefined')) ? ', Patient' : 'Patient only' }}</li>
                                                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: {{user.phone}}</li>
                                                     </ul>
                                                 </div>

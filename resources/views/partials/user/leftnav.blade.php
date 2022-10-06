@@ -29,24 +29,14 @@
                         <p>Appointments</p>
                     </router-link >
                 </li>
-                <li class="nav-item">
-                    <router-link to="/app/stories" class="nav-link">
-                        <i class="nav-icon fas fas fa-comment-alt"></i>
-                        <p>Stories</p>
-                    </router-link >
-                </li>
-                <li class="nav-item">
-                    <router-link to="/app/wallets" class="nav-link">
-                        <i class="nav-icon fas fa-wallet"></i>
-                        <p>Wallets</p>
-                    </router-link >
-                </li>
-                <li class="nav-item">
-                    <router-link to="/app/tickets" class="nav-link">
-                        <i class="nav-icon fas fa-tags"></i>
-                        <p>Tickets</p>
-                    </router-link >
-                </li>
+                <li class="nav-item"><router-link to="/app/stories" class="nav-link"><i class="nav-icon fas fa-comment-alt"></i><p>Stories</p></router-link></li>
+                <li class="nav-item"><router-link to="/app/chats" class="nav-link"><i class="nav-icon fas fa-comments"></i><p>Messages</p></router-link></li>
+                <li class="nav-item"><router-link to="/app/prescriptions" class="nav-link"><i class="nav-icon fas fa-pills"></i><p>Medications</p></router-link></li>
+                <li class="nav-item"><router-link to="/app/prescriptions" class="nav-link"><i class="nav-icon fas fa-file-signature"></i><p>Medical Records</p></router-link></li>
+                <li class="nav-item"><router-link to="/app/prescriptions" class="nav-link"><i class="nav-icon fas fa-pills"></i><p>Medications</p></router-link></li>
+                
+                <li class="nav-item"><router-link to="/app/wallets" class="nav-link"><i class="nav-icon fas fa-wallet"></i><p>Wallets</p></router-link></li>
+                <li class="nav-item"><router-link to="/app/tickets" class="nav-link"><i class="nav-icon fas fa-tags"></i><p>Tickets</p></router-link></li>
                 <li class="nav-item">
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link"><i class="nav-icon fas fa-power-off"></i><p>Log Out </p></a>
                 </li>
