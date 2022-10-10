@@ -2,10 +2,12 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 //Home Components
-import HomeWelcome                from './home/Welcome.vue';
 import HomeContact                from './home/Contact.vue';
+import HomeFooter                 from './home/Footer.vue';
+import HomeWelcome                from './home/Welcome.vue';
 
 Vue.component('HomeContact',            HomeContact);
+Vue.component('HomeFooter',             HomeFooter);
 Vue.component('HomeWelcome',            HomeWelcome);
 
 //Applicant Component

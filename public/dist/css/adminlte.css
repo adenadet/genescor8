@@ -53065,3 +53065,7 @@ color: #2B2A29  !important;
   line-height: 27px; 
   color: #2B2A29;
 }
+
+.brand-text{
+  font-family: Poppins; font-weight: 700; font-style:bold; size:24px; line-height: 35px;
+}
