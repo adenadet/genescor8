@@ -12,7 +12,7 @@
     </div>
     <div class="row mb-0 p-5 pb-0">
         <div class="col-md-12 mt-5">
-            <h3 class="mt-3" style="text-align: center; font-family: 'Work Sans'; font-style: normal; font-weight: 600; font-size: 48px; line-height: 56px;">How It <span class="text-primary">Works</span></h3>
+            <h3 class="m-5" style="text-align: center; font-family: 'Work Sans'; font-style: normal; font-weight: 600; font-size: 48px; line-height: 56px;">How It <span class="text-primary">Works</span></h3>
         </div>
         <div class="features col-md-3 col-sm-6">
             <h3 class="p-3 pr-0">

@@ -5,7 +5,7 @@
                 <div class="col-md-3">
                     <a href="/" class="navbar-brand">
                         <img src="/img/logo/genescor-square.png" alt="Genescor Logo" class="brand-image">
-                        <span class="brand-text font-weight-light" style="font-size: 24px; font-family: Poppins;"><b>GENESCOR</b></span>
+                        <span class="brand-text font-weight-light" style=" font-family: 'Poppins'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 35px; color: #2B2A29;"><b>GENESCOR</b></span>
                     </a>
                     <p>The online resource app for sickle cell disease warriors</p>
                     <p>15, Ogundana Street, Ikeja, Lagos, Nigeria</p>
@@ -40,8 +40,8 @@
         <div class="col-md-3 mb-0 p-0">
             <form>
                 <h5>Subscribe to Our Newsletter</h5>
-                <input class="form-control" type="text" placeholder="Email Address" />
-                <button class="mt-1 btn-danger btn">Get Started</button>
+                <input class="form-control mt-3" type="text" placeholder="Email Address" />
+                <button class="mt-1 btn-danger btn mt-3">Get Started</button>
             </form>
         </div>
     </div>
