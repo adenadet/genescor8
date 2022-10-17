@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="row mb-0 p-5 pb-0">
-        <div class="col-md-12 mt-5">
+        <div class="col-md-12" style="margin: 5em 0em;">
             <h3 class="m-5" style="text-align: center; font-family: 'Work Sans'; font-style: normal; font-weight: 600; font-size: 48px; line-height: 56px;">How It <span class="text-primary">Works</span></h3>
         </div>
         <div class="features col-md-3 col-sm-6">

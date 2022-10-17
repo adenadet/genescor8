@@ -58,8 +58,8 @@
                                 </div>
                                 <p class="text-center">Already have an Account? <a class="text-danger" href="{{route('login')}}">Login Here</a></p>
                                 <div class="row">
-                                    <p class="text-center col-4 offset-1 d-flex text-danger"><i class="fa fa-phone-alt fa-xs mr-1"></i>+2348033328792</p>
-                                    <p class="text-center col-4 offset-1 d-flex text-danger"><i class="far fa-envelope fa-xs mr-1"></i>info@genescor.com</p>
+                                    <p class="text-center col-md-4 offset-md-1 col-sm-6 col-xs-12 d-flex"><i class="fa fa-phone-alt fa-sm mt-1 mr-1 text-danger"></i>+2348033328792</p>
+                                    <p class="text-center col-md-4 offset-md-1 col-sm-6 col-xs-12 d-flex"><i class="far fa-envelope fa-sm mt-1 mr-1 text-danger"></i>info@genescor.com</p>
                                 </div>
                             </div>
                         </div>
